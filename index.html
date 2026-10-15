@@ -1,0 +1,1385 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Kağan Çağırıyor: Ötüken'e Doğru. Ulu Kağan dağınık Türk boylarını Ötüken'e çağırır; hikâye ve oyun.">
+<meta property="og:title" content="Kağan Çağırıyor: Ötüken'e Doğru">
+<meta property="og:image" content="img/logo-kagan-cagiriyor.webp">
+<title>Kağan Çağırıyor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500&family=Alegreya+SC:wght@500;700&family=Fredoka:wght@400;500;600&display=swap">
+<style>
+/* Düzen: destan kitabı. Okuma sütunu (~40rem) + kenar sütunu (görseller, ozan dizeleri); telefonda tek sütun.
+   Bölümleri kilim şeritleri ayırır; açılış ve toy sahnesi her temada "gece alanı"dır. Açık tema = Altay karı (gündüz), koyu tema = gece. */
+:root {
+  --zemin: #ECF0F5;
+  --yuzey: #F8FAFC;
+  --yuzey-2: #DCE3EC;
+  --murekkep: #1A2341;
+  --murekkep-2: #4A5470;
+  --cizgi: #C2CCDA;
+  --kilim: #AE2830;
+  --kilim-desen: #F4E4C4;
+  --altin: #8A5410;
+  --kor: #E0701A;
+  --orman: #2E6A49;
+  --nehir: #4F86C0;
+  --golge: rgba(26, 35, 65, 0.14);
+  --gece-alan: #141C3B;
+  --gece-alan-2: #26326C;
+  --gece-yazi: #EEF0F8;
+  --gece-yazi-2: #B9C0DA;
+  --gece-altin: #F2B84B;
+  --gece-cizgi: #36427C;
+  --gece-kor: #FF8A2A;
+  --sadak-deri: #6B3F22;
+  --sadak-agiz: #4A2A15;
+  --ok-sap: #D9C29A;
+  --boya-1: #E8562A;
+  --boya-2: #E6EEF7;
+  --boya-3: #B9844A;
+  --boya-4: #43A066;
+  --boya-5: #F2B63E;
+  --boya-6: #7FB6E8;
+  --boya-7: #D2434C;
+  --boya-8: #8C7BE0;
+  --yazi-anlati: "Alegreya", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --yazi-kapital: "Alegreya SC", "Alegreya", "Palatino Linotype", Georgia, serif;
+  --yazi-arayuz: "Fredoka", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  --olcek-0: 0.875rem;
+  --olcek-1: 1rem;
+  --olcek-2: 1.1875rem;
+  --olcek-3: 1.5rem;
+  --olcek-4: 2.125rem;
+  --olcek-5: 3rem;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --zemin: #0F162D;
+    --yuzey: #17203E;
+    --yuzey-2: #212B50;
+    --murekkep: #E8EBF5;
+    --murekkep-2: #AAB3CD;
+    --cizgi: #2E3964;
+    --kilim: #D2434A;
+    --kilim-desen: #F4E4C4;
+    --altin: #F0B54A;
+    --kor: #FF8A2A;
+    --orman: #4E9C70;
+    --nehir: #6FA2DA;
+    --golge: rgba(0, 0, 0, 0.35);
+    --gece-alan: #0A1024;
+    --gece-alan-2: #1D2858;
+    --gece-cizgi: #2D3870;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --zemin: #0F162D;
+  --yuzey: #17203E;
+  --yuzey-2: #212B50;
+  --murekkep: #E8EBF5;
+  --murekkep-2: #AAB3CD;
+  --cizgi: #2E3964;
+  --kilim: #D2434A;
+  --kilim-desen: #F4E4C4;
+  --altin: #F0B54A;
+  --kor: #FF8A2A;
+  --orman: #4E9C70;
+  --nehir: #6FA2DA;
+  --golge: rgba(0, 0, 0, 0.35);
+  --gece-alan: #0A1024;
+  --gece-alan-2: #1D2858;
+  --gece-cizgi: #2D3870;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--zemin);
+  color: var(--murekkep);
+  font-family: var(--yazi-anlati);
+  font-size: var(--olcek-1);
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+img { max-width: 100%; height: auto; }
+a { color: var(--kilim); text-underline-offset: 0.18em; }
+:focus-visible { outline: 3px solid var(--altin); outline-offset: 3px; border-radius: 4px; }
+.gece-alan :focus-visible { outline-color: var(--gece-altin); }
+.gizli-metin { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+h1, h2, h3, h4 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+
+/* Üst çubuk */
+.ust {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: var(--zemin);
+  border-bottom: 1px solid var(--cizgi);
+}
+.ust-ic {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-inline: 16px;
+  padding-block: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ust-ad {
+  font-family: var(--yazi-arayuz);
+  font-weight: 600;
+  font-size: var(--olcek-1);
+  color: var(--murekkep);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ust nav { flex: 1 1 auto; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.ust nav::-webkit-scrollbar { display: none; }
+.ust nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; }
+.ust nav a {
+  display: block;
+  font-family: var(--yazi-arayuz);
+  font-size: var(--olcek-0);
+  color: var(--murekkep-2);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.ust nav a:hover { color: var(--murekkep); background: var(--yuzey-2); }
+.tema-dugme {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--yazi-arayuz);
+  font-size: var(--olcek-0);
+  font-weight: 500;
+  color: var(--murekkep);
+  background: var(--yuzey);
+  border: 1px solid var(--cizgi);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.tema-dugme .gok {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--altin);
+  box-shadow: inset -4px -2px 0 0 var(--yuzey);
+}
+@media (max-width: 560px) { .ust-ad { display: none; } }
+
+/* Kilim şeridi */
+.kilim {
+  height: 18px;
+  background: var(--kilim);
+  position: relative;
+  border-block: 2px solid var(--kilim);
+}
+.kilim::after {
+  content: "";
+  position: absolute;
+  inset: 2px 0;
+  background: var(--kilim-desen);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='12'%3E%3Cpath d='M14 0 20 6 14 12 8 6Z M14 3 17 6 14 9 11 6Z' fill-rule='evenodd'/%3E%3Ccircle cx='1' cy='6' r='1.6'/%3E%3Ccircle cx='27' cy='6' r='1.6'/%3E%3C/svg%3E") repeat-x center / 28px 12px;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='12'%3E%3Cpath d='M14 0 20 6 14 12 8 6Z M14 3 17 6 14 9 11 6Z' fill-rule='evenodd'/%3E%3Ccircle cx='1' cy='6' r='1.6'/%3E%3Ccircle cx='27' cy='6' r='1.6'/%3E%3C/svg%3E") repeat-x center / 28px 12px;
+}
+
+.sayfa { max-width: 72rem; margin: 0 auto; padding-inline: 16px; padding-block: 0 48px; }
+@media (min-width: 720px) { .sayfa { padding-inline: 28px; } }
+
+/* Gece alanı (açılış, toy) */
+.gece-alan {
+  color: var(--gece-yazi);
+  background:
+    radial-gradient(1.5px 1.5px at 12% 18%, var(--gece-yazi-2) 60%, transparent 61%),
+    radial-gradient(1px 1px at 34% 9%, var(--gece-yazi-2) 60%, transparent 61%),
+    radial-gradient(1.5px 1.5px at 71% 14%, var(--gece-yazi-2) 60%, transparent 61%),
+    radial-gradient(1px 1px at 88% 31%, var(--gece-yazi-2) 60%, transparent 61%),
+    radial-gradient(1px 1px at 55% 4%, var(--gece-yazi-2) 60%, transparent 61%),
+    radial-gradient(120% 90% at 20% 0%, var(--gece-alan-2), var(--gece-alan) 70%);
+  border-radius: 10px;
+}
+
+/* Açılış */
+.acilis {
+  margin-top: 20px;
+  padding: 24px 20px 28px;
+  display: grid;
+  gap: 24px;
+}
+@media (min-width: 900px) {
+  .acilis { grid-template-columns: minmax(0, 23rem) minmax(0, 1fr); padding: 36px 40px 40px; gap: 40px; align-items: center; }
+}
+.acilis h1 { margin: 0; }
+.acilis h1 img { display: block; width: 100%; max-width: 23rem; height: auto; }
+.acilis-metin { min-width: 0; display: grid; gap: 16px; max-width: 38rem; }
+.kas {
+  font-family: var(--yazi-kapital);
+  font-weight: 700;
+  font-size: var(--olcek-0);
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  color: var(--altin);
+}
+.gece-alan .kas { color: var(--gece-altin); }
+.ozan-giris { font-size: var(--olcek-3); line-height: 1.4; font-style: italic; font-weight: 500; }
+.ozan-giris b { font-style: normal; font-weight: 800; color: var(--gece-altin); }
+.acilis-metin > p { font-size: var(--olcek-2); color: var(--gece-yazi); }
+.acilis-metin > p.ince { font-size: var(--olcek-1); color: var(--gece-yazi-2); }
+
+.secim {
+  margin: 4px 0 0;
+  padding: 16px;
+  border: 1px solid var(--gece-cizgi);
+  border-radius: 8px;
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+.secim legend {
+  padding: 0 6px;
+  font-family: var(--yazi-anlati);
+  font-weight: 800;
+  font-size: var(--olcek-3);
+  color: var(--gece-yazi);
+}
+.secim-satir { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.kahraman-sec { position: relative; display: block; cursor: pointer; }
+.kahraman-sec input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.kahraman-sec span.kutu {
+  display: grid;
+  gap: 2px;
+  height: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid var(--gece-cizgi);
+  background: var(--gece-alan);
+  transition: border-color 160ms ease, background 160ms ease;
+}
+.kahraman-sec b { font-family: var(--yazi-arayuz); font-weight: 600; font-size: var(--olcek-2); color: var(--gece-yazi); }
+.kahraman-sec small { font-family: var(--yazi-arayuz); font-size: var(--olcek-0); color: var(--gece-yazi-2); }
+.kahraman-sec i { font-size: var(--olcek-0); color: var(--gece-yazi-2); }
+.kahraman-sec input:checked + span.kutu { border-color: var(--gece-altin); background: var(--gece-alan-2); }
+.kahraman-sec input:focus-visible + span.kutu { outline: 3px solid var(--gece-altin); outline-offset: 2px; }
+.ad-alani { display: grid; gap: 6px; }
+.ad-alani label { font-family: var(--yazi-arayuz); font-size: var(--olcek-0); color: var(--gece-yazi-2); }
+.ad-alani input {
+  font-family: var(--yazi-arayuz);
+  font-size: var(--olcek-2);
+  font-weight: 500;
+  color: var(--gece-yazi);
+  background: var(--gece-alan);
+  border: 2px solid var(--gece-cizgi);
+  border-radius: 8px;
+  padding: 10px 12px;
+  width: 100%;
+  min-width: 0;
+}
+.ad-alani input:focus-visible { outline: 3px solid var(--gece-altin); outline-offset: 2px; }
+.secim .not { font-size: var(--olcek-0); color: var(--gece-yazi-2); }
+.ad-rozet {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--yazi-arayuz); font-size: var(--olcek-0);
+  color: var(--gece-yazi);
+}
+.ad-rozet b { color: var(--gece-altin); font-weight: 600; }
+
+/* Bölüm başlıkları */
+.kisim { padding-top: 56px; scroll-margin-top: 64px; }
+.kisim-bas { display: grid; gap: 8px; max-width: 40rem; margin-bottom: 28px; }
+.kisim-bas h2 { font-weight: 900; font-size: var(--olcek-5); line-height: 1.05; letter-spacing: -0.01em; }
+@media (max-width: 560px) { .kisim-bas h2 { font-size: 2.4rem; } }
+.kisim-bas p { font-size: var(--olcek-2); color: var(--murekkep-2); }
+
+/* Hikâye bölümleri */
+.bolum {
+  display: grid;
+  gap: 24px 48px;
+  padding-block: 32px;
+  scroll-margin-top: 64px;
+}
+.bolum + .bolum { border-top: 1px solid var(--cizgi); }
+@media (min-width: 960px) {
+  .bolum { grid-template-columns: minmax(0, 40rem) minmax(0, 17rem); }
+}
+.anlati { min-width: 0; display: grid; gap: 16px; }
+.anlati-bas { display: grid; gap: 4px; }
+.anlati-bas h3 { font-weight: 800; font-size: var(--olcek-4); line-height: 1.1; }
+.anlati p { font-size: var(--olcek-2); line-height: 1.65; }
+.anlati > p:first-of-type::first-letter {
+  float: left;
+  font-weight: 900;
+  font-size: 3.6em;
+  line-height: 0.82;
+  padding: 0.06em 0.1em 0 0;
+  color: var(--kilim);
+}
+.soz {
+  font-style: italic;
+  border-left: 3px solid var(--kilim);
+  padding-left: 14px;
+}
+.soz .imza { font-style: normal; font-family: var(--yazi-arayuz); font-size: var(--olcek-0); color: var(--murekkep-2); white-space: nowrap; }
+.dert {
+  display: grid;
+  gap: 8px;
+  padding: 16px 18px;
+  background: var(--yuzey);
+  border: 1px solid var(--cizgi);
+  border-radius: 8px;
+}
+.dert h4 { font-family: var(--yazi-arayuz); font-weight: 600; font-size: var(--olcek-1); }
+.dert p { font-size: var(--olcek-1); line-height: 1.55; }
+.cipler { display: flex; flex-wrap: wrap; gap: 6px; }
+.cip {
+  display: inline-block;
+  font-family: var(--yazi-arayuz);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.3;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--cizgi);
+  color: var(--murekkep-2);
+  background: var(--yuzey);
+}
+.cip.simdi { border-color: var(--orman); color: var(--orman); }
+.cip.sonra { border-color: var(--altin); color: var(--altin); }
+.kenar { min-width: 0; display: grid; gap: 20px; align-content: start; }
+.kenar figure { margin: 0; display: grid; gap: 8px; max-width: 17rem; }
+@media (max-width: 959px) {
+  .kenar { grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr)); }
+  .kenar figure { max-width: 15rem; }
+}
+.kenar img, .evre img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--cizgi); background: var(--yuzey-2); }
+figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height: 1.4; color: var(--murekkep-2); }
+.dize {
+  font-size: var(--olcek-3);
+  line-height: 1.35;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--murekkep);
+  display: grid;
+  gap: 6px;
+}
+.dize small { font-family: var(--yazi-arayuz); font-style: normal; font-size: 0.8125rem; color: var(--murekkep-2); }
+
+/* Satır içi terim */
+.terim {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: help;
+  text-decoration: underline dotted var(--altin) 2px;
+  text-underline-offset: 0.22em;
+}
+.terim:hover { color: var(--kilim); }
+
+/* Toy sahnesi: sadak */
+.toy { margin-top: 8px; padding: 20px; display: grid; gap: 20px; }
+@media (min-width: 860px) { .toy { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); padding: 28px 32px; align-items: center; } }
+.toy h4 { font-weight: 800; font-size: var(--olcek-3); color: var(--gece-yazi); }
+.toy p { color: var(--gece-yazi-2); font-size: var(--olcek-1); }
+.toy-sahne { min-width: 0; }
+.toy-sahne svg { display: block; width: 100%; max-width: 460px; height: auto; margin: 0 auto; }
+.toy-yan { min-width: 0; display: grid; gap: 14px; }
+.toy-dugmeler { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.dugme {
+  font-family: var(--yazi-arayuz);
+  font-weight: 600;
+  font-size: var(--olcek-1);
+  border-radius: 999px;
+  padding: 10px 18px;
+  cursor: pointer;
+  border: 2px solid var(--gece-altin);
+  background: var(--gece-altin);
+  color: var(--gece-alan);
+}
+.dugme.ikincil { background: transparent; color: var(--gece-yazi); border-color: var(--gece-cizgi); }
+.dugme:disabled { opacity: 0.55; cursor: default; }
+.kaydir { display: grid; gap: 4px; }
+.kaydir label { font-family: var(--yazi-arayuz); font-size: var(--olcek-0); color: var(--gece-yazi-2); }
+.kaydir input { width: 100%; accent-color: var(--gece-altin); }
+.gelenler { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; }
+.gelenler li { display: flex; align-items: center; gap: 8px; font-family: var(--yazi-arayuz); font-size: var(--olcek-0); color: var(--gece-yazi-2); min-width: 0; }
+.gelenler li .tuy { flex: 0 0 auto; width: 10px; height: 18px; border-radius: 2px 2px 6px 6px; border: 1px solid var(--gece-cizgi); background: transparent; }
+.gelenler li.geldi { color: var(--gece-yazi); }
+.gelenler li.geldi .tuy { border-color: transparent; }
+.toy-durum { font-style: italic; color: var(--gece-yazi); font-size: var(--olcek-1); min-height: 3.2em; }
+.bey-muhur {
+  display: grid; gap: 6px;
+  border-top: 1px solid var(--gece-cizgi);
+  padding-top: 12px;
+}
+.bey-muhur .kagan-soz { font-size: var(--olcek-2); color: var(--gece-yazi); font-style: italic; }
+.bey-muhur .unvan {
+  font-family: var(--yazi-kapital); font-weight: 700; letter-spacing: 0.08em; font-size: var(--olcek-2);
+  color: var(--gece-altin);
+}
+.bey-muhur.bekliyor .kagan-soz, .bey-muhur.bekliyor .unvan { color: var(--gece-yazi-2); }
+.ok-g { transition: transform 700ms cubic-bezier(.2,.8,.2,1), opacity 400ms ease; }
+.kor-g { transition: transform 900ms cubic-bezier(.2,.8,.2,1), opacity 500ms ease; }
+.alev-g { transition: transform 600ms ease; transform-box: fill-box; transform-origin: 50% 100%; }
+.isilti { transition: r 600ms ease, opacity 600ms ease; }
+@media (prefers-reduced-motion: reduce) {
+  .ok-g, .kor-g, .alev-g, .isilti, .kahraman-sec span.kutu { transition: none; }
+}
+
+/* Yol haritası */
+.harita-kutu {
+  display: grid;
+  gap: 20px;
+  align-items: start;
+}
+@media (min-width: 900px) { .harita-kutu { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); } }
+.harita {
+  min-width: 0;
+  background: var(--yuzey);
+  border: 1px solid var(--cizgi);
+  border-radius: 10px;
+  padding: 8px;
+}
+.harita svg { display: block; width: 100%; height: auto; }
+.harita .durak { cursor: pointer; }
+.harita .durak circle.halka { fill: var(--yuzey); stroke: var(--murekkep); stroke-width: 2.5; }
+.harita .durak.etkin circle.halka { fill: var(--kilim); stroke: var(--kilim); }
+.harita .durak .no { font-family: var(--yazi-arayuz); font-weight: 600; font-size: 15px; fill: var(--murekkep); }
+.harita .durak.etkin .no { fill: var(--kilim-desen); }
+.harita .durak .etiket { font-family: var(--yazi-arayuz); font-weight: 500; font-size: 15px; fill: var(--murekkep); paint-order: stroke; stroke: var(--yuzey); stroke-width: 4px; stroke-linejoin: round; }
+.harita .durak:focus { outline: none; }
+.harita .durak:focus-visible circle.halka { stroke: var(--altin); stroke-width: 5; }
+.harita .bolge { font-family: var(--yazi-kapital); font-weight: 700; font-size: 17px; letter-spacing: 0.2em; fill: var(--murekkep-2); }
+@media (max-width: 600px) {
+  .harita .durak .etiket { display: none; }
+  .harita .durak circle.halka { r: 21px; }
+  .harita .durak .no { font-size: 22px; }
+  .harita .bolge { font-size: 24px; letter-spacing: 0.12em; }
+}
+.harita-panel {
+  min-width: 0;
+  display: grid;
+  gap: 10px;
+  padding: 18px 20px;
+  background: var(--yuzey);
+  border: 1px solid var(--cizgi);
+  border-top: 4px solid var(--kilim);
+  border-radius: 8px;
+}
+.harita-panel h3 { font-weight: 800; font-size: var(--olcek-3); line-height: 1.15; }
+.harita-panel p { font-size: var(--olcek-1); }
+.harita-panel dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: var(--olcek-0); }
+.harita-panel dt { font-family: var(--yazi-arayuz); color: var(--murekkep-2); }
+.harita-panel dd { margin: 0; font-family: var(--yazi-arayuz); font-weight: 500; }
+.durak-listesi { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.durak-listesi button {
+  font-family: var(--yazi-arayuz); font-size: var(--olcek-0);
+  border: 1px solid var(--cizgi); background: var(--zemin); color: var(--murekkep);
+  border-radius: 999px; padding: 5px 12px; cursor: pointer;
+}
+.durak-listesi button[aria-pressed="true"] { background: var(--kilim); border-color: var(--kilim); color: var(--kilim-desen); }
+
+/* Oynanış */
+.dongu {
+  display: grid;
+  gap: 20px;
+  align-items: center;
+  padding: 18px;
+  background: var(--yuzey);
+  border: 1px solid var(--cizgi);
+  border-radius: 10px;
+  margin-bottom: 24px;
+}
+@media (min-width: 720px) { .dongu { grid-template-columns: 220px minmax(0, 1fr); padding: 22px 26px; } }
+.dongu svg { display: block; width: 100%; max-width: 220px; height: auto; margin: 0 auto; }
+.dongu-yan { min-width: 0; display: grid; gap: 12px; }
+.dongu-yan p { font-size: var(--olcek-1); }
+.evre-dugmeleri { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 8px; }
+.evre-dugmeleri button {
+  width: 100%;
+  text-align: left;
+  display: grid; gap: 0;
+  font-family: var(--yazi-arayuz);
+  border: 2px solid var(--cizgi);
+  background: var(--zemin);
+  color: var(--murekkep);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.evre-dugmeleri button b { font-weight: 600; font-size: var(--olcek-1); }
+.evre-dugmeleri button small { font-size: 0.8125rem; color: var(--murekkep-2); }
+.evre-dugmeleri button[aria-pressed="true"] { border-color: var(--kilim); background: var(--yuzey); }
+.dongu-dugme {
+  justify-self: start;
+  font-family: var(--yazi-arayuz); font-weight: 600; font-size: var(--olcek-0);
+  border: 1px solid var(--murekkep); background: transparent; color: var(--murekkep);
+  border-radius: 999px; padding: 6px 14px; cursor: pointer;
+}
+.dongu .yay { fill: none; stroke-width: 18; }
+.dongu .isaret { transition: transform 700ms cubic-bezier(.3,.7,.2,1); transform-origin: 110px 110px; }
+@media (prefers-reduced-motion: reduce) { .dongu .isaret { transition: none; } }
+.dongu .merkez-1 { font-family: var(--yazi-anlati); font-weight: 800; font-size: 22px; fill: var(--murekkep); }
+.dongu .merkez-2 { font-family: var(--yazi-arayuz); font-size: 12px; fill: var(--murekkep-2); }
+
+.evreler { display: grid; gap: 16px; }
+@media (min-width: 900px) { .evreler { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.evre {
+  display: grid;
+  grid-template-columns: minmax(0, 7rem) minmax(0, 1fr);
+  gap: 16px;
+  padding: 16px;
+  background: var(--yuzey);
+  border: 1px solid var(--cizgi);
+  border-radius: 10px;
+  scroll-margin-top: 72px;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+@media (min-width: 560px) { .evre { grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); } }
+.evre.etkin { border-color: var(--kilim); box-shadow: 0 0 0 2px var(--kilim), 0 8px 22px var(--golge); }
+.evre-metin { min-width: 0; display: grid; gap: 8px; align-content: start; }
+.evre h3 { font-weight: 800; font-size: var(--olcek-3); line-height: 1.1; }
+.evre ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
+.evre li { font-size: var(--olcek-1); line-height: 1.5; }
+.evre li b { font-family: var(--yazi-arayuz); font-weight: 600; }
+.evre.genis { grid-column: 1 / -1; }
+
+/* Sözlük */
+.sozluk { margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 12px; }
+.madde {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  padding: 14px 16px;
+  background: var(--yuzey);
+  border: 1px solid var(--cizgi);
+  border-radius: 8px;
+  scroll-margin-top: 72px;
+}
+.madde:target { border-color: var(--kilim); box-shadow: 0 0 0 2px var(--kilim); }
+.madde dt { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.madde dt span { font-weight: 800; font-size: var(--olcek-3); line-height: 1.1; }
+.madde dt button {
+  flex: 0 0 auto;
+  font-family: var(--yazi-arayuz); font-size: 0.8125rem; font-weight: 500;
+  color: var(--altin); background: none; border: 1px solid var(--cizgi); border-radius: 999px;
+  padding: 2px 10px; cursor: pointer;
+}
+.madde dt button[aria-expanded="true"] { border-color: var(--altin); }
+.madde dd { margin: 0; font-size: var(--olcek-1); line-height: 1.5; }
+.madde dd.oyunda { font-family: var(--yazi-arayuz); font-size: var(--olcek-0); color: var(--murekkep-2); border-top: 1px dashed var(--cizgi); padding-top: 6px; }
+.madde dd.oyunda b { color: var(--murekkep); font-weight: 600; }
+
+/* Tarihten + erken erişim */
+.tarih-kutu { display: grid; gap: 24px; }
+@media (min-width: 900px) { .tarih-kutu { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; } }
+.kenar-notu {
+  min-width: 0;
+  display: grid; gap: 12px;
+  padding: 20px 22px;
+  background: var(--yuzey);
+  border: 1px solid var(--cizgi);
+  border-radius: 8px;
+}
+.kenar-notu h3 { font-weight: 800; font-size: var(--olcek-3); }
+.kenar-notu ul { margin: 0; padding-left: 1.1em; display: grid; gap: 8px; }
+.kenar-notu li { font-size: var(--olcek-1); }
+.kenar-notu .dip { font-family: var(--yazi-arayuz); font-size: 0.8125rem; color: var(--murekkep-2); }
+.erken { min-width: 0; display: grid; gap: 14px; padding: 20px 22px; border: 2px solid var(--murekkep); border-radius: 8px; }
+.erken h3 { font-weight: 800; font-size: var(--olcek-3); }
+.erken h4 { font-family: var(--yazi-arayuz); font-weight: 600; font-size: var(--olcek-1); display: flex; gap: 8px; align-items: center; }
+.erken ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; }
+.erken li { font-size: var(--olcek-1); }
+
+.son {
+  margin-top: 56px;
+  padding: 28px 20px;
+  display: grid; gap: 8px;
+}
+.son p.kapanis { font-size: var(--olcek-4); font-weight: 800; font-style: italic; line-height: 1.15; }
+.son p { color: var(--gece-yazi-2); font-size: var(--olcek-1); }
+
+/* Terim kartı (alt panel) */
+.terim-kart {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  width: min(26rem, calc(100% - 32px));
+  z-index: 40;
+  display: grid; gap: 8px;
+  padding: 16px 18px;
+  background: var(--yuzey);
+  color: var(--murekkep);
+  border: 1px solid var(--cizgi);
+  border-top: 4px solid var(--altin);
+  border-radius: 10px;
+  box-shadow: 0 14px 40px var(--golge);
+}
+.terim-kart-bas { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.terim-kart h3 { font-weight: 800; font-size: var(--olcek-3); }
+.terim-kart p { font-size: var(--olcek-1); line-height: 1.5; }
+.terim-kart p.oyunda { font-family: var(--yazi-arayuz); font-size: var(--olcek-0); color: var(--murekkep-2); }
+.terim-kart button.kapat {
+  font-family: var(--yazi-arayuz); font-size: var(--olcek-0);
+  background: none; border: 1px solid var(--cizgi); color: var(--murekkep); border-radius: 999px; padding: 3px 12px; cursor: pointer;
+}
+.terim-kart a { font-family: var(--yazi-arayuz); font-size: var(--olcek-0); }
+</style>
+<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}.site-alt{font-family:var(--yazi-arayuz);font-size:.875rem;text-align:center;padding:20px 16px 32px;color:var(--murekkep-2)}.site-alt a{color:var(--murekkep-2)}</style>
+</head>
+<body>
+
+
+<header class="ust">
+  <div class="ust-ic">
+    <a class="ust-ad" href="#acilis">Kağan Çağırıyor</a>
+    <nav aria-label="Sayfa bölümleri">
+      <ul>
+        <li><a href="#hikaye">Hikâye</a></li>
+        <li><a href="#toy">Toy</a></li>
+        <li><a href="#yol">Yol haritası</a></li>
+        <li><a href="#oyun">Nasıl oynanır</a></li>
+        <li><a href="#sozluk">Sözlük</a></li>
+        <li><a href="#tarihten">Tarihten</a></li>
+      </ul>
+    </nav>
+    <button type="button" class="tema-dugme" id="tema-dugme" aria-label="Temayı değiştir"><span class="gok" aria-hidden="true"></span><span id="tema-ad">Gece</span></button>
+  </div>
+</header>
+
+<main class="sayfa">
+
+  <section class="acilis gece-alan" id="acilis" aria-labelledby="ad-baslik">
+    <h1 id="ad-baslik"><img src="img/logo-kagan-cagiriyor.webp" width="820" height="771" alt="Kağan Çağırıyor: Ötüken'e Doğru"></h1>
+    <div class="acilis-metin">
+      <p class="kas">Bir göç destanı · Erken erişim · Android</p>
+      <p class="ozan-giris"><b>Dedem Korkut der ki:</b> kopuzumu alayım, size dağın içinden çıkıp Ötüken'e yürüyen bir obayı anlatayım. Kimse geride kalmadı; ben de anlatırken kimseyi geride bırakmayacağım.</p>
+      <p>Ulu Kağan dağınık Türk boylarını Ötüken'deki toyuna çağırır. Çağrıyı taşıyan bir bey değil, sıradan bir askerdir: küçük bir birlikle karlı geçitlerde, bozkırda ve karanlık ormanda dağınık aileleri bulur, onları Kağan'a sağ salim ulaştırır.</p>
+      <p class="ince">Bu sayfa hem bir okuma parçası hem de oyunun kısa bir tanıtımıdır. Aşağıda kahramanı seç ve ona bir ad ver; anlatıdaki ad her yerde değişir. Altı çizili sözcüklere dokununca kısa açıklamaları açılır.</p>
+
+      <fieldset class="secim">
+        <legend>O gün kor kabını kim taşıdı?</legend>
+        <div class="secim-satir">
+          <label class="kahraman-sec" for="kahraman-erkek">
+            <input type="radio" name="kahraman" id="kahraman-erkek" value="erkek" checked>
+            <span class="kutu"><b>Erkek</b><small>atlı okçu</small><i>“Soğuktan korkma; ondan öğren.”</i></span>
+          </label>
+          <label class="kahraman-sec" for="kahraman-kadin">
+            <input type="radio" name="kahraman" id="kahraman-kadin" value="kadin">
+            <span class="kutu"><b>Kadın</b><small>atlı okçu</small><i>“Gece uzun, ama ocak bizde.”</i></span>
+          </label>
+        </div>
+        <div class="ad-alani">
+          <label for="kahraman-adi">Kahramanın adı: kendi adını yaz</label>
+          <input type="text" id="kahraman-adi" name="kahraman-adi" value="" placeholder="Adını yaz" maxlength="14" autocomplete="off" spellcheck="false">
+        </div>
+        <p class="not">İkisi de aynı güçtedir; fark yalnız görünüştedir. Oyunda da kahramanın adını sen verirsin; ad yazmazsan anlatı ona “Asker” der.</p>
+        <p class="ad-rozet" aria-live="polite">Anlatının kahramanı: <b data-ad>Asker</b></p>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="kisim" id="hikaye" aria-labelledby="hikaye-baslik">
+    <div class="kisim-bas">
+      <p class="kas">Ozanın anlattığı</p>
+      <h2 id="hikaye-baslik">Hikâye</h2>
+      <p>Prologla başlar, üç boyla sürer, Ötüken'deki toyla biter. Her bölümde bir boy vardır ve o boyun bir derdi; dert, bölümün sonunda karşına çıkan büyük düşmandır.</p>
+    </div>
+    <div class="kilim" aria-hidden="true"></div>
+
+    <article class="bolum" id="prolog" aria-labelledby="prolog-baslik">
+      <div class="anlati">
+        <header class="anlati-bas">
+          <p class="kas">Prolog · Demir Dağ ve Vadi</p>
+          <h3 id="prolog-baslik">Ulağın oku</h3>
+        </header>
+        <p>Anlatıya göre bir <button type="button" class="terim" data-terim="oba">oba</button>, Ergenekon dedikleri dar vadide dört yüz yıl yaşamış. Çevresi dağ duvarıydı; içi sıcak, dışı bilinmezdi. Sonraki anlatıcılar orayı kısaca Demir Dağ ve Vadi diye anar.</p>
+        <p>Bir sabah dağın öte yanından bir ok aşıp vadiye düştü. Onu Ulu <button type="button" class="terim" data-terim="kagan">Kağan</button>'ın ulağı fırlatmıştı; bu bir çağrı okuydu. Demirciler “Çağrıyı duyduk” dedi. Körükler uğuldadı, ateş yükseldi, Demir Dağ eriyip aktı.</p>
+        <p>Kapı açılınca gökyüzü kızıl yandı. O ışık çok uzaktan görüldü derler. Aç <button type="button" class="terim" data-terim="yagi">yağıları</button> da, <button type="button" class="terim" data-terim="erlik">Erlik</button>'in karanlıktan gelen yaratıklarını da obanın üstüne çekti. Halk ikiye bölündü: kalanlar ve gidenler. Yaşlı Ocak Ata vadide kalmayı seçti; ana ateşten bir <button type="button" class="terim" data-terim="kor">kor</button> alıp demir kor kabına koydu ve gidenlere verdi: “Ben vadinin sıcağını sevdim. Siz yolun soğuğunu sevin.”</p>
+        <p>Kapıda ulak bekliyordu; yüzü başlığıyla örtülü, atı terli. Obanın genç askerlerine baktı, birini seçti ve eline Kağan'ın oklarıyla dolu bir <button type="button" class="terim" data-terim="sadak">sadak</button> verdi. Yolda bulunacak her <button type="button" class="terim" data-terim="boy">boya</button> bir ok düşüyordu.</p>
+        <p class="soz">“<span data-ad>Asker</span>! Dağınık aileleri topla, kimseyi geride bırakma. Kağan Ötüken'de bekler.” <span class="imza">ulak</span></p>
+        <p>Seçilen ne bey ne de bir kağan soyundandı. Yayını iyi çeken, atını iyi süren sıradan bir askerdi. Yanında birkaç atlı, arkasında <button type="button" class="terim" data-terim="kagni">kağnılar</button>, kağnıda kor kabı vardı. Yol uzundu.</p>
+        <p class="soz">“Bu yük benim değil, hepimizin; ben yalnız önde yürüyorum.” <span class="imza">— <span data-ad>Asker</span></span></p>
+      </div>
+      <aside class="kenar" aria-label="Prolog görselleri">
+        <figure>
+          <img src="img/stil-gunduz-kervan.webp" width="600" height="1067" alt="Karlı bir yolda at sırtındaki kahraman, kağnılar, koyunlar ve çam ağaçları.">
+          <figcaption>Stil karesi: kervan Altay'ın karında yola düşer.</figcaption>
+        </figure>
+        <p class="dize">Kor geçmiştir, ok yarındır.<small>Ozanın sözü</small></p>
+      </aside>
+    </article>
+
+    <article class="bolum" id="bolum-1" aria-labelledby="b1-baslik">
+      <div class="anlati">
+        <header class="anlati-bas">
+          <p class="kas">Birinci bölüm · Altay'ın Karı</p>
+          <h3 id="b1-baslik">Kar Boyu ve Yelbeğen</h3>
+          <div class="cipler"><span class="cip simdi">Erken erişimde oynanır</span><span class="cip">9 konak</span></div>
+        </header>
+        <p>Altay'ın karı kırk gün yağar, kırk gün bakar. Rüzgâr <button type="button" class="terim" data-terim="ocak">ocağı</button> yalar geçer; kor <button type="button" class="terim" data-terim="tezek">tezekle</button> yaşar. Gündüz kervan yürür, kahraman çevrede yakacak toplar, yabani atları <button type="button" class="terim" data-terim="kement">kementle</button> çeker. Akşam kağnılar halka olur, gece ocağın ışığı halkı korur.</p>
+        <p>Karın altında dağınık ocaklar var derler. Kar Boyu'nun obaları birbirinden habersiz, korku içinde tek tek donuyordu. Donmuş Dere'de boyun öncü ailesi bulundu; kervana katıldılar ve kor kabının ışığında ısındılar.</p>
+        <p>Rüzgâr Sırtı'nı geçince bir tepede gök renkli bir kurt belirdi. <button type="button" class="terim" data-terim="gokboru">Gök Börü</button> hiç konuşmadı; yalnız baktı ve dar geçidi gösterdi. O günden sonra gece bastırınca ruh kurtları obanın yanında koştu.</p>
+        <p>Geçidi çok başlı bir dev tutuyordu: Yelbeğen. Her başı ayrı bir yöne bakar; hiçbiri ötekini görmez. Dağınıklığın ta kendisiydi. Dev kar olup dağılınca geçit açıldı. Kar Boyu ocaklarını tüttürdü, közlerini kor kabına kattı. Boyun yaşlısı Kağan'ın okunu kuşağına soktu; onu Ötüken'de sadağa koyacaktı.</p>
+        <div class="dert">
+          <h4>Boyun derdi: Yelbeğen</h4>
+          <p>Bölümün dokuzuncu konağında, gece gelir. Üç baş sırayla saldırır ve saldırının ineceği yer önceden yerde parlar. Saldırısını indiren baş bir süre açık kalır; altın halkayı gördüğün an vur. Üç baş da düşünce dev dağılır.</p>
+        </div>
+      </div>
+      <aside class="kenar" aria-label="Birinci bölüm görselleri">
+        <figure>
+          <img src="img/oyun-donmus-dere.webp" width="600" height="1067" alt="Oyun içi görüntü: donmuş derenin buzlu yüzeyi yanında at sırtında kahraman.">
+          <figcaption>Oyundan: Donmuş Dere, üçüncü konak.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/stil-gece-ocak.webp" width="600" height="1067" alt="Gece kampı: ocak yanıyor, atlılar halka olmuş, yukarıda yağılar ve mavi ışıklı ruh kurtları.">
+          <figcaption>Stil karesi: gece, ocak ve Gök Börü'nün ruh kurtları.</figcaption>
+        </figure>
+        <p class="dize">Kar yağar, ocak sönmez; boy yalnız kalmaz.<small>Kar Boyu'nun ozanından</small></p>
+      </aside>
+    </article>
+
+    <article class="bolum" id="bolum-2" aria-labelledby="b2-baslik">
+      <div class="anlati">
+        <header class="anlati-bas">
+          <p class="kas">İkinci bölüm · Yılkı Bozkırı</p>
+          <h3 id="b2-baslik">Yılkı Boyu ve Tepegöz</h3>
+          <div class="cipler"><span class="cip sonra">Güncellemeyle gelir</span><span class="cip">9 konak</span></div>
+        </header>
+        <p>Dağ geride kaldı; önde ucu bucağı olmayan bozkır uzanıyordu. Yılkı sürüleri toz kaldırır; her at bir yoldaş, her yoldaş bir ok. Oba artık kalabalıktı ve kalabalık hem güçtür hem yüktür. Terk edilmiş kışlaklarda kalmış aileler bulundu, başka bir göçebe obayla ortak ateş yakıldı.</p>
+        <p>Yılkı Boyu sürüleriyle yaşar. Ama bozkırda tek bir göz açılmıştı; sürüleri sayıyor, saydığını haraç istiyordu. Haraç yolunda adsız bir yağı beyinin adamları “yükünün yarısını ver” dedi. Kam Ece o gece rüyasında tek bir göz gördü.</p>
+        <p>Tepegöz toza karışınca haraç kapısı kapandı. Yılkı Boyu sürüleriyle yürüyüşe katıldı, közünü ocağa kattı. Oba artık küçük değildi. Bir sabah ufukta ormanlı dağlar mavi mavi göründü.</p>
+        <div class="dert">
+          <h4>Boyun derdi: Tepegöz</h4>
+          <p>Tek gözün baktığı yön kalkanlıdır; yanından ve arkasından vurmak gerekir. Bu bölümde ordu da büyür: atlı okçular, çift kılıçlı atlılar ve emri senin verdiğin taktikler.</p>
+        </div>
+      </div>
+      <aside class="kenar" aria-label="İkinci bölüm notu">
+        <p class="dize">At sayılır, onur sayılmaz.<small>Yılkı Boyu'nun ozanından</small></p>
+      </aside>
+    </article>
+
+    <article class="bolum" id="bolum-3" aria-labelledby="b3-baslik">
+      <div class="anlati">
+        <header class="anlati-bas">
+          <p class="kas">Üçüncü bölüm · Ötüken'in Eşiği</p>
+          <h3 id="b3-baslik">Yış Boyu ve Erlik'in Elçisi</h3>
+          <div class="cipler"><span class="cip sonra">Güncellemeyle gelir</span><span class="cip">9 konak</span></div>
+        </header>
+        <p>Son yol en uzun yoldur derler; çünkü varmaya yaklaştıkça insan geri bakar. Kıvılcım “Vadiye dönsek?” diye sordu. Bazı aileler gerçekten dönmek istedi; kimi ikna edildi, kimiyle vedalaşıldı.</p>
+        <p><button type="button" class="terim" data-terim="yis">Yışın</button> dibinde Yış Boyu bekliyordu. Kağan'ın çağrısını yıllardır bekleyen dağınık ocaklardı bunlar ve umutlarını yitirmek üzereydiler. Rüzgâr fısıldadı: “Kimse gelmedi, kimse gelmeyecek.” Bu fısıltının sahibi Erlik'in Elçisi'ydi.</p>
+        <p>Orhun geçidinde Gök Börü son kez yolu gösterdi. Ata taşlarının dizildiği yolda biri “Bizden önce de buradan geçenler olmuş” dedi. Ufukta Kağan'ın ocağının ışığı görünüyordu. Elçi dağılınca fısıltı sustu; Yış Boyu közünü ocağa kattı ve Ötüken'in kapısı açıldı.</p>
+        <div class="dert">
+          <h4>Boyun derdi: Erlik'in Elçisi</h4>
+          <p>Elçi ışığa dayanıklıdır ve ocağı söndürmeye gelir. Ona karşı korun kendisi gerekir: her boyun közü ocakta birlikte yanar.</p>
+        </div>
+      </div>
+      <aside class="kenar" aria-label="Üçüncü bölüm notu">
+        <p class="dize">Gelmeyen yok; bekleyen var.<small>Yış Boyu'nun ozanından</small></p>
+      </aside>
+    </article>
+
+    <article class="bolum" id="toy" aria-labelledby="toy-baslik">
+      <div class="anlati">
+        <header class="anlati-bas">
+          <p class="kas">Son · Ötüken</p>
+          <h3 id="toy-baslik">Ötüken'de toy</h3>
+          <div class="cipler"><span class="cip sonra">Güncellemeyle gelir</span></div>
+        </header>
+        <p>Sabah ışık <button type="button" class="terim" data-terim="otuken">Ötüken</button>'in ormanlı dağına düştü; Orhun gümüş gibi aktı. Kağan'ın otağının önünde ocaklar tütüyordu: dört yana dağılmış boylar <button type="button" class="terim" data-terim="toy">toya</button> gelmişti. Kağan'ın başka ulakları da yola çıkmış derler; kimi doğudan, kimi batıdan, kimi kuzeyden, kimi güneyden geldi. Hiçbiri geride kalmamıştı.</p>
+        <p>Her boy, yolda kendisine iletilen oku Kağan'ın sadağına koydu ve közünü Kağan'ın ocağına kattı. Usta Tunç demir ocak halkasını yerine oturttu, Kıvılcım ilk tezeği attı. Tek ok kırılır, dolu sadak kırılmaz derler. Korlar tek ocakta birleşti; <button type="button" class="terim" data-terim="el">El</button> böyle kuruldu.</p>
+        <p>Ulu Kağan'ın yüzü ocağın ışığında gölgede kaldı. Tek bir cümle söyledi, sonra çağrıyı taşıyan askeri yanına çağırdı. Sıradan bir asker o gün <button type="button" class="terim" data-terim="bey">bey</button> oldu: Kağan ona bir yurdun yönetimini verdi. Kor bu kez yol için değil, hepimiz için yandı.</p>
+        <p class="soz">Dedem Korkut der ki: yol biter, ocak kalır. <span class="imza">ozan</span></p>
+      </div>
+      <aside class="kenar" aria-label="Toy görseli">
+        <figure>
+          <img src="img/sadak-simge.webp" width="560" height="560" alt="Ay ışığında renkli tüylü okların yelpaze gibi açıldığı bir sadak.">
+          <figcaption>Oyunun simgesi: Kağan'ın sadağı. Oklar sadağın içinde, her boyun tüyü kendi renginde.</figcaption>
+        </figure>
+      </aside>
+    </article>
+
+    <div class="toy gece-alan" aria-labelledby="sadak-baslik">
+      <div class="toy-sahne">
+        <svg id="sadak-svg" viewBox="0 0 440 400" role="img" aria-labelledby="sadak-svg-ad">
+          <title id="sadak-svg-ad">Kağan'ın sadağı ve ocağı</title>
+          <defs>
+            <radialGradient id="isilti-boya">
+              <stop offset="0" style="stop-color: var(--gece-kor); stop-opacity: 0.75"></stop>
+              <stop offset="0.55" style="stop-color: var(--gece-kor); stop-opacity: 0.22"></stop>
+              <stop offset="1" style="stop-color: var(--gece-kor); stop-opacity: 0"></stop>
+            </radialGradient>
+          </defs>
+          <circle class="isilti" id="ocak-isilti" cx="318" cy="330" r="40" fill="url(#isilti-boya)"></circle>
+          <ellipse cx="318" cy="352" rx="62" ry="13" style="fill: var(--gece-alan)"></ellipse>
+          <g id="ocak-taslari"></g>
+          <g class="alev-g" id="alev">
+            <path d="M318 344 C300 330 304 312 312 300 C314 312 320 314 320 304 C322 292 316 282 318 270 C334 288 340 306 334 324 C332 336 326 342 318 344Z" style="fill: var(--gece-kor)"></path>
+            <path d="M318 344 C310 336 310 324 316 314 C318 322 322 322 322 316 C330 326 330 338 318 344Z" style="fill: var(--gece-altin)"></path>
+          </g>
+          <g id="korlar"></g>
+          <g id="sadak-g" transform="translate(150 188) rotate(-12)">
+            <g id="oklar"></g>
+            <path d="M-26 0 L26 0 L20 176 Q0 192 -20 176 Z" style="fill: var(--sadak-deri)"></path>
+            <path d="M-25 18 L25 18 L24.4 40 L-24.4 40 Z" style="fill: var(--boya-7)"></path>
+            <path d="M-6 25 L0 20 L6 25 L0 33 Z" style="fill: var(--gece-alan-2)"></path>
+            <path d="M-22.6 120 L22.6 120 L21.8 140 L-21.8 140 Z" style="fill: var(--boya-7)"></path>
+            <path d="M-6 126 L0 122 L6 126 L0 136 Z" style="fill: var(--gece-alan-2)"></path>
+            <circle cx="0" cy="78" r="5" style="fill: var(--gece-altin)"></circle>
+            <ellipse cx="0" cy="0" rx="26" ry="7" style="fill: var(--sadak-agiz); stroke: var(--gece-altin); stroke-width: 2"></ellipse>
+          </g>
+        </svg>
+      </div>
+      <div class="toy-yan">
+        <h4 id="sadak-baslik">Sadak dolsun</h4>
+        <p>Her dokunuşta bir boy Kağan'a varır: okunu sadağa koyar, közünü ocağa katar. Sekiz ok, sekiz kor, tek ocak.</p>
+        <div class="toy-dugmeler">
+          <button type="button" class="dugme" id="sadak-ileri">Bir boy daha vardı</button>
+          <button type="button" class="dugme ikincil" id="sadak-bastan">Baştan</button>
+        </div>
+        <div class="kaydir">
+          <label for="sadak-sayi">Varan boy sayısı: <b id="sadak-sayi-yazi">1</b> / 8</label>
+          <input type="range" id="sadak-sayi" min="1" max="8" step="1" value="1">
+        </div>
+        <ol class="gelenler" id="gelenler" aria-label="Toya varan boylar"></ol>
+        <p class="toy-durum" id="toy-durum" aria-live="polite">Demir Dağ obası çağrı okunu sadağa koydu, közünü ocağa kattı.</p>
+        <div class="bey-muhur bekliyor" id="bey">
+          <p class="kagan-soz" id="bey-soz">Sadak dolunca Ulu Kağan konuşur.</p>
+          <p class="unvan"><span data-ad>Asker</span> · <span id="bey-unvan">çağrının taşıyıcısı</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="kilim" aria-hidden="true" style="margin-top: 56px"></div>
+
+  <section class="kisim" id="yol" aria-labelledby="yol-baslik">
+    <div class="kisim-bas">
+      <p class="kas">Altay'dan Ötüken'e</p>
+      <h2 id="yol-baslik">Yol haritası</h2>
+      <p>Yol batıda Altay'ın karlı geçitlerinden başlar, bozkırı aşar ve doğuda Ötüken'in ormanlı dağlarında biter. Bir durağa dokun, o bölümün özeti açılsın.</p>
+    </div>
+    <div class="harita-kutu">
+      <div class="harita">
+        <svg id="harita-svg" viewBox="0 0 640 400" aria-label="Altay'dan Ötüken'e yol haritası">
+          <g id="harita-zemin"></g>
+          <path id="harita-yol" d="M70 318 C120 300 150 250 182 222 S 270 250 330 276 S 430 250 470 196 S 540 140 584 112" fill="none" style="stroke: var(--kilim); stroke-width: 3.5; stroke-dasharray: 2 9; stroke-linecap: round"></path>
+          <text class="bolge" x="44" y="56">ALTAY</text>
+          <text class="bolge" x="262" y="356">BOZKIR</text>
+          <text class="bolge" x="452" y="44">ÖTÜKEN YIŞI</text>
+          <g id="harita-duraklar"></g>
+        </svg>
+      </div>
+      <div class="harita-panel" id="harita-panel" aria-live="polite">
+        <p class="kas" id="hp-kas">Prolog</p>
+        <h3 id="hp-baslik">Demir Dağ ve Vadi</h3>
+        <p id="hp-metin">Ulağın oku vadiye düşer, demirciler dağı eritir. Ocak Ata koru verir, ulak Kağan'ın oklarını sıradan bir askere uzatır. Kervan yola çıkar.</p>
+        <dl>
+          <dt>Boy</dt><dd id="hp-boy">Demir Dağ obası</dd>
+          <dt>Dert</dt><dd id="hp-dert">Kızıl gökyüzünün çektiği yağılar</dd>
+          <dt>Durum</dt><dd id="hp-durum">Erken erişimde</dd>
+        </dl>
+        <ul class="durak-listesi" id="durak-listesi" aria-label="Duraklar"></ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="kilim" aria-hidden="true" style="margin-top: 56px"></div>
+
+  <section class="kisim" id="oyun" aria-labelledby="oyun-baslik">
+    <div class="kisim-bas">
+      <p class="kas">Bir gün, bir gece</p>
+      <h2 id="oyun-baslik">Oyun nasıl oynanır</h2>
+      <p>Yol <button type="button" class="terim" data-terim="konak">konak</button> konak ilerler. Bir konak bir gündüz ve bir geceden oluşur, yaklaşık iki dakika sürer. Gündüz yolculuk ve toplama, akşam kamp, gece savunma. Kaybedersen yalnız o konak yeniden oynanır.</p>
+    </div>
+
+    <div class="dongu">
+      <svg id="dongu-svg" viewBox="0 0 220 220" role="img" aria-labelledby="dongu-ad">
+        <title id="dongu-ad">Bir konağın döngüsü: gündüz, gün batımı, gece, şafak</title>
+        <circle class="yay" cx="110" cy="110" r="84" style="stroke: var(--yuzey-2)"></circle>
+        <g id="dongu-yaylar"></g>
+        <g class="isaret" id="dongu-isaret">
+          <circle cx="110" cy="26" r="13" style="fill: var(--yuzey); stroke: var(--murekkep); stroke-width: 3"></circle>
+          <circle cx="110" cy="26" r="5" style="fill: var(--murekkep)"></circle>
+        </g>
+        <text class="merkez-1" x="110" y="108" text-anchor="middle">1 konak</text>
+        <text class="merkez-2" x="110" y="128" text-anchor="middle">yaklaşık 2 dakika</text>
+      </svg>
+      <div class="dongu-yan">
+        <p>Döngünün bir evresine dokun ya da döngüyü baştan sona izle. Her evrenin ayrıntısı aşağıda.</p>
+        <ul class="evre-dugmeleri" id="evre-dugmeleri">
+          <li><button type="button" data-evre="0" aria-pressed="true"><b>Gündüz</b><small>yaklaşık 70 sn</small></button></li>
+          <li><button type="button" data-evre="1" aria-pressed="false"><b>Gün batımı</b><small>birkaç saniye</small></button></li>
+          <li><button type="button" data-evre="2" aria-pressed="false"><b>Gece</b><small>yaklaşık 50 sn</small></button></li>
+          <li><button type="button" data-evre="3" aria-pressed="false"><b>Şafak</b><small>konak sonu</small></button></li>
+        </ul>
+        <button type="button" class="dongu-dugme" id="dongu-izle">Döngüyü izle</button>
+      </div>
+    </div>
+
+    <div class="evreler">
+      <section class="evre etkin" id="evre-0" aria-labelledby="evre-0-baslik">
+        <img src="img/oyun-gunduz.webp" width="600" height="1067" alt="Oyun içi gündüz: karlı yolda kervan ve çevresinde dolaşan atlı kahraman.">
+        <div class="evre-metin">
+          <h3 id="evre-0-baslik">Gündüz: kervan yürür</h3>
+          <ul>
+            <li><b>Kervan</b> kendi yolunda ilerler; sen atınla çevresinde dolaşırsın.</li>
+            <li><b>Topla:</b> tezek, odun ve yiyecek. Topladığın şey ancak <b>kervana teslim</b> edince sayılır; kervana yaklaşman yeter.</li>
+            <li><b>Kement:</b> yabani bir ata yaklaş, kement kendiliğinden atılır. At seni izler, kervana varınca atlı asker olur.</li>
+            <li><b>Aile işleri:</b> Yılkıcı Manas atları getirir, Kıvılcım tezek kümelerini boşaltır, Gökçe iz sürüp avlanır. Tek dokunuşla <b>Gönder</b>, istersen <b>Geri çağır</b>.</li>
+            <li><b>Dörtnala:</b> sağ alttaki düğme kısa bir hız verir. Soluk çabuk biter, birkaç saniyede dolar; ama av ve atlar ürker.</li>
+            <li><b>Hedefler:</b> her günün küçük, isteğe bağlı hedefleri vardır; ödülü kor ve tamgadır. Yol üstünde arada bir karar kartı çıkar.</li>
+            <li>Akşam yaklaşınca kervan borusu çalar: geceden önce kervana dön.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="evre" id="evre-1" aria-labelledby="evre-1-baslik">
+        <img src="img/oyun-kamp-yeri.webp" width="600" height="1067" alt="Oyun içi kamp yeri seçimi: Yol Üstü ve Dere Kenarı kartları, kazanç ve bedel işaretleriyle.">
+        <div class="evre-metin">
+          <h3 id="evre-1-baslik">Gün batımı: kamp kurulur</h3>
+          <ul>
+            <li><b>Kamp yeri:</b> kervan yürürken üç kart çıkar: Yol Üstü, dere kenarı, kayalık, orman kenarı ya da tepe. Her kartta ne kazandırdığı ve neye mal olduğu yazar. Dokunmazsan kervan yol üstünde durur.</li>
+            <li><b>Kağnı halkası:</b> kağnılar ocağın çevresinde halka olur.</li>
+            <li><b>Keçe çadır:</b> çadır bir sığınaktır, ocağı ısıtır; ama halkayı büyütür, yakıtı artırır ve kağnı yükünden yer tutar.</li>
+            <li>Karar sana ağır gelirse Ayarlar'da “Kam seçsin” diyebilirsin.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="evre" id="evre-2" aria-labelledby="evre-2-baslik">
+        <img src="img/oyun-gece-yakin.webp" width="600" height="1067" alt="Oyun içi gece: ocak yanıyor, kağnılar halka olmuş, üstte 'Yağılar kuzeydoğudan geliyor!' uyarısı.">
+        <div class="evre-metin">
+          <h3 id="evre-2-baslik">Gece: ocak yanar</h3>
+          <ul>
+            <li><b>Isı ve yakıt:</b> ocak tezekle ve odunla yanar. Halkın sıcaklığı düşerse askerler yavaşlar, soğuk uzarsa halk azalır.</li>
+            <li><b>Ocağı harla:</b> ışık büyür, ısı artar, ama yakıt üç kat hızlı tükenir.</li>
+            <li><b>Işık kuralı:</b> askerler yalnız ocağın ışığındaki yağıyı vurur. Yağılar hangi yönden gelecekse önceden uyarı çıkar.</li>
+            <li><b>Geri Atış:</b> düşmandan uzaklaşırken geriye attığın ok iki kat vurur ve kalkanı deler.</li>
+            <li><b>Gök Börü:</b> gece ruh kurtlarını çağırırsın; yağıları dağıtırlar.</li>
+            <li><b>Birlik:</b> atlı askerler ışıkta savunur. Güncellemelerle okçular, çift kılıçlı atlılar ve dört taktik gelir: Çember, Vur-çekil, Yarma, Kıskaç.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="evre" id="evre-3" aria-labelledby="evre-3-baslik">
+        <img src="img/oyun-safak.webp" width="600" height="1067" alt="Oyun içi şafak: ocak sönmek üzere, kamp sakinleşmiş.">
+        <div class="evre-metin">
+          <h3 id="evre-3-baslik">Şafak: konak biter</h3>
+          <ul>
+            <li>Kalan yağılar dağılıp kaybolur; kimse kan dökmez, düşen düşman dağılır.</li>
+            <li><b>Konak sonu:</b> bir ile üç arası Alev ve kor kazanırsın. Kor, Otağ'da yeni yetenekler açar.</li>
+            <li><b>Halk sıfıra inerse</b> ozan araya girer: “Hayır, öyle olmadı.” O günü baştan anlatır; yalnız o konak yeniden oynanır.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="evre genis" id="evre-boss" aria-labelledby="evre-boss-baslik">
+        <img src="img/oyun-yelbegen.webp" width="600" height="1067" alt="Oyun içi Yelbeğen: kampın önünde üç başlı dev, zeminde kırmızı saldırı uyarısı.">
+        <div class="evre-metin">
+          <h3 id="evre-boss-baslik">Bölüm sonu ve akın</h3>
+          <ul>
+            <li><b>Bölüm sonu:</b> dokuzuncu konağın gecesi boyun derdi gelir. Bölüm 1'de Yelbeğen: saldırının ineceği yeri yerde gör, kaç, sonra açılan başı vur.</li>
+            <li><b>Akın</b> <span class="cip sonra">güncellemeyle gelir</span>: kervan yürürken bir birlikle yağı kampına baskın yaparsın. Amaç iki tanedir: esir aileleri çıkarmak ve yağıyı yıpratıp yolu açmak. Kurtarılan aileler obaya katılır.</li>
+            <li><b>Ordu</b> <span class="cip sonra">güncellemeyle gelir</span>: obaya katılan halkı birliklere sen dağıtırsın; emri sen verirsin, birlikler uygular.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <div class="kilim" aria-hidden="true" style="margin-top: 56px"></div>
+
+  <section class="kisim" id="sozluk" aria-labelledby="sozluk-baslik">
+    <div class="kisim-bas">
+      <p class="kas">Yolda geçen sözler</p>
+      <h2 id="sozluk-baslik">Sözlük</h2>
+      <p>Her sözcüğün kısa anlamı burada. “Oyunda” düğmesi o sözün oyundaki karşılığını açar.</p>
+    </div>
+    <dl class="sozluk" id="sozluk-liste">
+      <div class="madde" id="sozluk-kagan"><dt><span>Kağan</span><button type="button" aria-expanded="false" aria-controls="oy-kagan">Oyunda</button></dt><dd>Boyların başı, hükümdar. Bu anlatıda adı anılmayan Ulu Kağan, dağınık boyları Ötüken'e çağırır.</dd><dd class="oyunda" id="oy-kagan" hidden><b>Oyunda:</b> Ulu Kağan yalnız sonda, ocağın ışığında bir gölge olarak görünür.</dd></div>
+      <div class="madde" id="sozluk-el"><dt><span>El</span><button type="button" aria-expanded="false" aria-controls="oy-el">Oyunda</button></dt><dd>İl; boyların birliğiyle kurulan devlet. Eldeki “el” ile karışmasın diye büyük harfle yazılır.</dd><dd class="oyunda" id="oy-el" hidden><b>Oyunda:</b> sonda korlar tek ocakta birleşince El kurulur.</dd></div>
+      <div class="madde" id="sozluk-toy"><dt><span>Toy</span><button type="button" aria-expanded="false" aria-controls="oy-toy">Oyunda</button></dt><dd>Büyük toplantı ve şölen. Boylar Kağan'ın toyunda bir araya gelir.</dd><dd class="oyunda" id="oy-toy" hidden><b>Oyunda:</b> yolun sonu Ötüken'deki toydur.</dd></div>
+      <div class="madde" id="sozluk-sadak"><dt><span>Sadak</span><button type="button" aria-expanded="false" aria-controls="oy-sadak">Oyunda</button></dt><dd>Okların taşındığı kılıf, okluk.</dd><dd class="oyunda" id="oy-sadak" hidden><b>Oyunda:</b> her boy Kağan'a varınca kendisine iletilen oku sadağa koyar.</dd></div>
+      <div class="madde" id="sozluk-kor"><dt><span>Kor</span><button type="button" aria-expanded="false" aria-controls="oy-kor">Oyunda</button></dt><dd>Ateşten kalan, için için yanan köz. Oba, vadideki ana ateşten aldığı koru demir bir kor kabında taşır.</dd><dd class="oyunda" id="oy-kor" hidden><b>Oyunda:</b> kor aynı zamanda konak sonunda kazanılan ödüldür; Otağ'da yetenek açar.</dd></div>
+      <div class="madde" id="sozluk-ocak"><dt><span>Ocak</span><button type="button" aria-expanded="false" aria-controls="oy-ocak">Oyunda</button></dt><dd>Kampın ortasındaki ateş; ısıyı ve ışığı o verir.</dd><dd class="oyunda" id="oy-ocak" hidden><b>Oyunda:</b> ocak tezekle ve odunla yanar; “Ocağı harla” ışığı büyütür, yakıtı üç kat yer.</dd></div>
+      <div class="madde" id="sozluk-konak"><dt><span>Konak</span><button type="button" aria-expanded="false" aria-controls="oy-konak">Oyunda</button></dt><dd>Bir günlük yol ve o gecenin kampı.</dd><dd class="oyunda" id="oy-konak" hidden><b>Oyunda:</b> bir gündüz ve bir gece, yaklaşık iki dakika. Her bölüm dokuz konaktır.</dd></div>
+      <div class="madde" id="sozluk-oba"><dt><span>Oba</span><button type="button" aria-expanded="false" aria-controls="oy-oba">Oyunda</button></dt><dd>Birlikte göçen akraba ailelerin küçük topluluğu.</dd><dd class="oyunda" id="oy-oba" hidden><b>Oyunda:</b> halk sayısı obanın büyüklüğüdür; yolda bulunan aileler katıldıkça artar.</dd></div>
+      <div class="madde" id="sozluk-boy"><dt><span>Boy</span><button type="button" aria-expanded="false" aria-controls="oy-boy">Oyunda</button></dt><dd>Birçok obanın bağlandığı büyük topluluk. Anlatıdaki Kar, Yılkı ve Yış boyları kurgusaldır.</dd><dd class="oyunda" id="oy-boy" hidden><b>Oyunda:</b> her bölüm bir boyun derdini anlatır; dert çözülünce boy yürüyüşe katılır.</dd></div>
+      <div class="madde" id="sozluk-yagi"><dt><span>Yağı</span><button type="button" aria-expanded="false" aria-controls="oy-yagi">Oyunda</button></dt><dd>Düşman. Anlatıdaki yağılar adsızdır; hiçbir gerçek halkı temsil etmez.</dd><dd class="oyunda" id="oy-yagi" hidden><b>Oyunda:</b> gece ocağın ışığına giren yağıyı askerler vurur; vurulan yağı dağılıp kaybolur.</dd></div>
+      <div class="madde" id="sozluk-kagni"><dt><span>Kağnı</span><button type="button" aria-expanded="false" aria-controls="oy-kagni">Oyunda</button></dt><dd>Öküzün çektiği iki tekerlekli yük arabası.</dd><dd class="oyunda" id="oy-kagni" hidden><b>Oyunda:</b> akşam kağnılar halka olup kampı çevreler; çadırlar kağnı yükünden yer tutar.</dd></div>
+      <div class="madde" id="sozluk-tezek"><dt><span>Tezek</span><button type="button" aria-expanded="false" aria-controls="oy-tezek">Oyunda</button></dt><dd>Kurutulmuş hayvan gübresi; ağacın az olduğu bozkırda yakıt.</dd><dd class="oyunda" id="oy-tezek" hidden><b>Oyunda:</b> topladığın tezek kervana teslim edilince sayılır ve geceleri ocağı besler.</dd></div>
+      <div class="madde" id="sozluk-kement"><dt><span>Kement</span><button type="button" aria-expanded="false" aria-controls="oy-kement">Oyunda</button></dt><dd>Ucu ilmekli uzun ip; at yakalamaya yarar.</dd><dd class="oyunda" id="oy-kement" hidden><b>Oyunda:</b> yabani ata yaklaşınca kement kendiliğinden atılır; at kervana varınca atlı asker olur.</dd></div>
+      <div class="madde" id="sozluk-gokboru"><dt><span>Gök Börü</span><button type="button" aria-expanded="false" aria-controls="oy-gokboru">Oyunda</button></dt><dd>Gök renkli kurt. Birçok anlatıda yol gösteren dost bir ruhtur; hiç konuşmaz.</dd><dd class="oyunda" id="oy-gokboru" hidden><b>Oyunda:</b> gündüz yolu gösterir, gece çağrılınca ruh kurtları yağıları dağıtır.</dd></div>
+      <div class="madde" id="sozluk-ozan"><dt><span>Ozan</span><button type="button" aria-expanded="false" aria-controls="oy-ozan">Oyunda</button></dt><dd>Kopuzla destan anlatan kişi. Bu hikâyeyi bir ozan sonradan anlatır.</dd><dd class="oyunda" id="oy-ozan" hidden><b>Oyunda:</b> bir konak kaybedilince ozan “Hayır, öyle olmadı” der ve o günü yeniden anlatır.</dd></div>
+      <div class="madde" id="sozluk-bey"><dt><span>Bey</span><button type="button" aria-expanded="false" aria-controls="oy-bey">Oyunda</button></dt><dd>Kağan'ın bir yurdu yönetmek için seçtiği kişi; bugünkü valiye benzer bir sorumluluk.</dd><dd class="oyunda" id="oy-bey" hidden><b>Oyunda:</b> sonda Kağan, çağrıyı taşıyan sıradan askeri bey yapar.</dd></div>
+      <div class="madde" id="sozluk-otuken"><dt><span>Ötüken</span><button type="button" aria-expanded="false" aria-controls="oy-otuken">Oyunda</button></dt><dd>Orhun suyu ve Hangay dağları çevresindeki ormanlı yurt. Eski yazıtlarda ilin tutulacağı yer diye anılır.</dd><dd class="oyunda" id="oy-otuken" hidden><b>Oyunda:</b> yolun varış yeri; Kağan'ın otağı ve ocağı oradadır.</dd></div>
+      <div class="madde" id="sozluk-erlik"><dt><span>Erlik</span><button type="button" aria-expanded="false" aria-controls="oy-erlik">Oyunda</button></dt><dd>Altay anlatılarında yeraltının, karanlığın ve soğuğun efendisi.</dd><dd class="oyunda" id="oy-erlik" hidden><b>Oyunda:</b> Erlik görünmez; karanlıktan gelen yaratıkları ve Elçisi görünür.</dd></div>
+      <div class="madde" id="sozluk-yis"><dt><span>Yış</span><button type="button" aria-expanded="false" aria-controls="oy-yis">Oyunda</button></dt><dd>Eski Türkçede ormanlı dağ, orman.</dd><dd class="oyunda" id="oy-yis" hidden><b>Oyunda:</b> Bölüm 3'teki Yış Boyu adını Ötüken'in ormanından alır.</dd></div>
+      <div class="madde" id="sozluk-kam"><dt><span>Kam</span><button type="button" aria-expanded="false" aria-controls="oy-kam">Oyunda</button></dt><dd>Şifa veren, rüya ve işaret yorumlayan saygın bilge. Obanın kamı Kam Ece'dir.</dd><dd class="oyunda" id="oy-kam" hidden><b>Oyunda:</b> Kam Ece gece yağıların hangi yönden geleceğini önceden söyler.</dd></div>
+    </dl>
+  </section>
+
+  <div class="kilim" aria-hidden="true" style="margin-top: 56px"></div>
+
+  <section class="kisim" id="tarihten" aria-labelledby="tarih-baslik">
+    <div class="kisim-bas">
+      <p class="kas">Kenar notu</p>
+      <h2 id="tarih-baslik">Tarihten</h2>
+      <p>Bu oyun bir destan anlatısıdır, tarih kitabı değildir. Yine de çerçevesi eski yazıtlardaki bir düşünceye yaslanır.</p>
+    </div>
+    <div class="tarih-kutu">
+      <aside class="kenar-notu" aria-labelledby="kn-baslik">
+        <h3 id="kn-baslik">Anlatıya göre, yazıtlara göre</h3>
+        <ul>
+          <li>Orhun yazıtlarından Tonyukuk yazıtında, Kağan'ın Ötüken'e yerleştiği duyulunca güneyden, batıdan, kuzeyden ve doğudan boyların gelip katıldığı anlatılır.</li>
+          <li>Bilge Kağan yazıtı Ötüken ormanını ilin tutulacağı yer olarak anar. Yazıtlarda azalmış, dağılmış boyların toplanıp güçlendirildiği de söylenir.</li>
+          <li>Oyunun çağı Göktürk çağıdır. Dedem Korkut ise sonraki bir dönemin ozanıdır; o eski göçü sonradan anlatır. Bu bilerek kurulmuş bir çerçevedir.</li>
+          <li>Kağan'ın boylara ok göndererek çağırdığını gösteren bir belge bilmiyoruz; çağrı oku oyunun yorumudur. “Tek ok kırılır” öğüdü de birçok halkın anlatısında geçer.</li>
+          <li>Ulu Kağan'ın adı anılmaz. Oyundaki boylar, kişiler ve yağılar kurgusaldır.</li>
+        </ul>
+        <p class="dip">Yazıt aktarımları ikincil çevirilere dayanır ve özetlenmiştir.</p>
+      </aside>
+      <div class="erken" aria-labelledby="erken-baslik">
+        <h3 id="erken-baslik">Erken erişim: ne var, ne gelecek</h3>
+        <h4><span class="cip simdi">Şimdi</span> Bölüm 1, Altay'ın Karı</h4>
+        <ul>
+          <li>Dokuz konak ve sonda Yelbeğen</li>
+          <li>Gündüz yolculuğu, kement, aile işleri, Dörtnala, Hedefler</li>
+          <li>Kamp yeri seçimi, kağnı halkası, keçe çadır</li>
+          <li>Gece savunması, ocak, Geri Atış, Gök Börü</li>
+        </ul>
+        <h4><span class="cip sonra">Güncellemelerle</span> yolun devamı</h4>
+        <ul>
+          <li>Bölüm 2: Yılkı Bozkırı ve Tepegöz</li>
+          <li>Bölüm 3: Ötüken'in Eşiği ve Erlik'in Elçisi</li>
+          <li>Ordu: atlı okçular, çift kılıçlı atlılar, dört taktik</li>
+          <li>Akın ve Ötüken'de toy</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="son gece-alan">
+    <p class="kapanis">Yol biter, ocak kalır.</p>
+    <p>Kağan Çağırıyor: Ötüken'e Doğru · <span data-ad>Asker</span> yolda.</p>
+  </footer>
+</main>
+
+<div class="terim-kart" id="terim-kart" role="dialog" aria-modal="false" aria-labelledby="tk-baslik" hidden>
+  <div class="terim-kart-bas">
+    <h3 id="tk-baslik">Terim</h3>
+    <button type="button" class="kapat" id="tk-kapat">Kapat</button>
+  </div>
+  <p id="tk-metin"></p>
+  <p class="oyunda" id="tk-oyunda"></p>
+  <a id="tk-bag" href="#sozluk">Sözlükte gör</a>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (s, k) { return (k || document).querySelector(s); };
+  var $$ = function (s, k) { return Array.prototype.slice.call((k || document).querySelectorAll(s)); };
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function el(ad, ozellik, ebeveyn) {
+    var e = document.createElementNS(SVGNS, ad);
+    for (var k in ozellik) e.setAttribute(k, ozellik[k]);
+    if (ebeveyn) ebeveyn.appendChild(e);
+    return e;
+  }
+  var azHareket = false;
+  try { azHareket = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+
+  /* ---------- Tema (Gündüz / Gece) ---------- */
+  var temaDugme = $("#tema-dugme"), temaAd = $("#tema-ad");
+  function koyuMu() {
+    var t = document.documentElement.getAttribute("data-theme");
+    if (t === "dark") return true;
+    if (t === "light") return false;
+    try { return window.matchMedia("(prefers-color-scheme: dark)").matches; } catch (e) { return false; }
+  }
+  function temaYaz() {
+    var k = koyuMu();
+    temaAd.textContent = k ? "Gündüz" : "Gece";
+    temaDugme.setAttribute("aria-label", k ? "Gündüz temasına geç" : "Gece temasına geç");
+  }
+  temaDugme.addEventListener("click", function () {
+    document.documentElement.setAttribute("data-theme", koyuMu() ? "light" : "dark");
+    temaYaz();
+  });
+  try { window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", temaYaz); } catch (e) {}
+  temaYaz();
+
+  /* ---------- Kahraman ve ad ---------- */
+  var KAHRAMANLAR = { erkek: true, kadin: true };
+  var YEDEK_AD = "Asker";
+  var ANAHTAR = "kagan-cagiriyor-okuma-v2";
+  var durum = { kahraman: "erkek", ad: "" };
+  try {
+    var kayit = JSON.parse(localStorage.getItem(ANAHTAR) || "null");
+    if (kayit && KAHRAMANLAR[kayit.kahraman]) {
+      durum.kahraman = kayit.kahraman;
+      durum.ad = typeof kayit.ad === "string" ? kayit.ad.slice(0, 14) : "";
+    }
+  } catch (e) {}
+  function kaydet() { try { localStorage.setItem(ANAHTAR, JSON.stringify(durum)); } catch (e) {} }
+  function gecerliAd() {
+    var a = (durum.ad || "").replace(/\s+/g, " ").trim();
+    return a || YEDEK_AD;
+  }
+  function adlariYaz() {
+    var a = gecerliAd();
+    $$("[data-ad]").forEach(function (n) { n.textContent = a; });
+  }
+  var adGirdi = $("#kahraman-adi");
+  adGirdi.value = durum.ad;
+  $("#kahraman-" + durum.kahraman).checked = true;
+  adGirdi.addEventListener("input", function () { durum.ad = adGirdi.value.slice(0, 14); adlariYaz(); kaydet(); });
+  $$("input[name='kahraman']").forEach(function (r) {
+    r.addEventListener("change", function () {
+      if (!r.checked) return;
+      durum.kahraman = r.value;
+      kaydet();
+    });
+  });
+  adlariYaz();
+
+  /* ---------- Sözlük: "Oyunda" düğmeleri ---------- */
+  $$(".madde dt button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var hedef = document.getElementById(b.getAttribute("aria-controls"));
+      var acik = b.getAttribute("aria-expanded") === "true";
+      b.setAttribute("aria-expanded", acik ? "false" : "true");
+      hedef.hidden = acik;
+    });
+  });
+
+  /* ---------- Terim kartı ---------- */
+  var kart = $("#terim-kart"), sonTerim = null;
+  function terimAc(anahtar, kaynak) {
+    var m = document.getElementById("sozluk-" + anahtar);
+    if (!m) return;
+    $("#tk-baslik").textContent = $("dt span", m).textContent;
+    $("#tk-metin").textContent = $("dd", m).textContent;
+    $("#tk-oyunda").textContent = $("dd.oyunda", m).textContent;
+    $("#tk-bag").setAttribute("href", "#sozluk-" + anahtar);
+    kart.hidden = false;
+    sonTerim = kaynak || null;
+    $("#tk-kapat").focus({ preventScroll: true });
+  }
+  function terimKapat(odakGeri) {
+    if (kart.hidden) return;
+    kart.hidden = true;
+    if (odakGeri && sonTerim) sonTerim.focus({ preventScroll: true });
+  }
+  $$(".terim").forEach(function (t) {
+    t.setAttribute("aria-haspopup", "dialog");
+    t.addEventListener("click", function (e) { e.stopPropagation(); terimAc(t.getAttribute("data-terim"), t); });
+  });
+  $("#tk-kapat").addEventListener("click", function () { terimKapat(true); });
+  $("#tk-bag").addEventListener("click", function () { terimKapat(false); });
+  kart.addEventListener("click", function (e) { e.stopPropagation(); });
+  document.addEventListener("click", function () { terimKapat(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") terimKapat(true); });
+
+  /* ---------- Toy: sadak ve ocak ---------- */
+  var BOYLAR = [
+    { ad: "Demir Dağ obası", soz: "Demir Dağ obası çağrı okunu sadağa koydu, közünü ocağa kattı." },
+    { ad: "Kar Boyu", soz: "Kar Boyu geldi; karın altından çıkan ocakların közü ocağa karıştı." },
+    { ad: "Yılkı Boyu", soz: "Yılkı Boyu sürüleriyle vardı; haraç verilmeyen okunu sadağa koydu." },
+    { ad: "Yış Boyu", soz: "Yış Boyu ormandan indi: “Gelmeyen yok; bekleyen var.”" },
+    { ad: "Doğudan gelen boy", soz: "Gün doğusundan bir boy geldi; Kağan'ın başka bir ulağı onları bulmuştu." },
+    { ad: "Güneyden gelen boy", soz: "Güneyden bir boy vardı; okunu sadağa, közünü ocağa kattı." },
+    { ad: "Batıdan gelen boy", soz: "Batıdan bir boy geldi; yolları uzun, ateşleri sıcaktı." },
+    { ad: "Kuzeyden gelen boy", soz: "Kuzeyden son boy da vardı. Kimse geride kalmadı." }
+  ];
+  var ACI = [-4, 10, -17, 23, -30, 36, -43, 49];
+  var BOY_UZ = [176, 168, 172, 160, 164, 154, 156, 146];
+  var KOR_YER = [[0, 0], [-15, 4], [14, 5], [-6, -8], [8, -9], [-24, -2], [24, -1], [1, 9]];
+  var KOR_GELIS = [[-140, -40], [-200, 0], [-60, 120], [40, -160], [160, -60], [0, 140], [-220, -100], [40, -220]];
+  var okGrup = $("#oklar"), korGrup = $("#korlar"), taslar = $("#ocak-taslari");
+  for (var s = 0; s < 11; s++) {
+    var a = Math.PI * (0.06 + 0.88 * s / 10);
+    el("ellipse", { cx: (318 + Math.cos(a) * 58).toFixed(1), cy: (352 + Math.sin(a) * 12).toFixed(1), rx: 10, ry: 6, style: "fill: var(--gece-cizgi)" }, taslar);
+  }
+  var oklar = [], korlar = [], gelenListe = $("#gelenler");
+  BOYLAR.forEach(function (b, i) {
+    var dis = el("g", { style: "transform: rotate(" + ACI[i] + "deg)" }, okGrup);
+    var ic = el("g", { "class": "ok-g" }, dis);
+    var L = BOY_UZ[i], boya = "var(--boya-" + (i + 1) + ")";
+    el("line", { x1: 0, y1: 40, x2: 0, y2: -L, style: "stroke: var(--ok-sap); stroke-width: 3.2; stroke-linecap: round" }, ic);
+    el("path", { d: "M0 " + (-L + 6) + " L-10 " + (-L + 13) + " L-10 " + (-L + 44) + " L0 " + (-L + 37) + " Z", style: "fill: " + boya }, ic);
+    el("path", { d: "M0 " + (-L + 6) + " L10 " + (-L + 13) + " L10 " + (-L + 44) + " L0 " + (-L + 37) + " Z", style: "fill: " + boya + "; opacity: 0.82" }, ic);
+    el("rect", { x: -2.5, y: -L - 4, width: 5, height: 9, rx: 1.5, style: "fill: var(--ok-sap)" }, ic);
+    oklar.push(ic);
+    var k = el("g", { "class": "kor-g" }, korGrup);
+    el("circle", { cx: 318 + KOR_YER[i][0], cy: 344 + KOR_YER[i][1], r: 7.5, style: "fill: var(--gece-kor)" }, k);
+    el("circle", { cx: 318 + KOR_YER[i][0] - 1.5, cy: 344 + KOR_YER[i][1] - 1.5, r: 3, style: "fill: var(--gece-altin)" }, k);
+    korlar.push(k);
+    var li = document.createElement("li");
+    li.innerHTML = '<span class="tuy" aria-hidden="true"></span><span></span>';
+    li.lastChild.textContent = b.ad;
+    gelenListe.appendChild(li);
+  });
+  var sayi = 1, ileri = $("#sadak-ileri"), kaydirici = $("#sadak-sayi");
+  function toyCiz(duyur) {
+    oklar.forEach(function (o, i) {
+      var var_ = i < sayi;
+      o.style.transform = var_ ? "translateY(0px)" : "translateY(70px)";
+      o.style.opacity = var_ ? "1" : "0";
+    });
+    korlar.forEach(function (k, i) {
+      var var_ = i < sayi;
+      k.style.transform = var_ ? "translate(0px, 0px)" : "translate(" + KOR_GELIS[i][0] + "px, " + KOR_GELIS[i][1] + "px)";
+      k.style.opacity = var_ ? "1" : "0";
+    });
+    $$("li", gelenListe).forEach(function (li, i) {
+      li.classList.toggle("geldi", i < sayi);
+      li.firstChild.style.background = i < sayi ? "var(--boya-" + (i + 1) + ")" : "transparent";
+    });
+    $("#ocak-isilti").setAttribute("r", String(40 + sayi * 11));
+    var olcek = 0.55 + sayi * 0.075;
+    $("#alev").style.transform = "scale(" + olcek.toFixed(3) + ")";
+    $("#sadak-sayi-yazi").textContent = String(sayi);
+    kaydirici.value = String(sayi);
+    ileri.disabled = sayi >= 8;
+    if (duyur !== false) $("#toy-durum").textContent = BOYLAR[sayi - 1].soz;
+    var bey = $("#bey");
+    if (sayi >= 8) {
+      bey.classList.remove("bekliyor");
+      $("#bey-soz").textContent = "Ulu Kağan der ki: “Geldiniz; kimse eksik değil.” Sonra çağrıyı taşıyan askeri yanına çağırdı.";
+      $("#bey-unvan").textContent = "Kağan'ın beyi";
+    } else {
+      bey.classList.add("bekliyor");
+      $("#bey-soz").textContent = "Sadak dolunca Ulu Kağan konuşur. Daha " + (8 - sayi) + " boy yolda.";
+      $("#bey-unvan").textContent = "çağrının taşıyıcısı";
+    }
+  }
+  ileri.addEventListener("click", function () { if (sayi < 8) { sayi++; toyCiz(); } });
+  $("#sadak-bastan").addEventListener("click", function () { sayi = 1; toyCiz(); });
+  kaydirici.addEventListener("input", function () { sayi = Math.max(1, Math.min(8, parseInt(kaydirici.value, 10) || 1)); toyCiz(); });
+  toyCiz(false);
+
+  /* ---------- Yol haritası ---------- */
+  var zemin = $("#harita-zemin");
+  el("path", { d: "M0 0 H640 V400 H0 Z", style: "fill: var(--yuzey)" }, zemin);
+  // Bozkır: yumuşak tepe çizgileri ve ot tutamları
+  for (var g = 0; g < 26; g++) {
+    var gx = 210 + (g * 53) % 230, gy = 236 + (g * 37) % 120;
+    el("path", { d: "M" + gx + " " + gy + " l4 -9 M" + (gx + 6) + " " + gy + " l2 -11 M" + (gx + 11) + " " + gy + " l-3 -8", style: "stroke: var(--altin); stroke-width: 1.6; opacity: 0.45; fill: none; stroke-linecap: round" }, zemin);
+  }
+  // Altay dağları
+  var DAG = [[30, 150, 70], [78, 170, 86], [128, 140, 64], [176, 180, 74], [20, 250, 54], [92, 262, 60], [150, 232, 50], [230, 160, 52]];
+  DAG.forEach(function (d) {
+    var x = d[0], y = d[1], h = d[2];
+    el("path", { d: "M" + (x - h * 0.75) + " " + y + " L" + x + " " + (y - h) + " L" + (x + h * 0.75) + " " + y + " Z", style: "fill: var(--yuzey-2); stroke: var(--murekkep-2); stroke-width: 1.2; stroke-linejoin: round" }, zemin);
+    el("path", { d: "M" + (x - h * 0.22) + " " + (y - h * 0.7) + " L" + x + " " + (y - h) + " L" + (x + h * 0.22) + " " + (y - h * 0.7) + " L" + (x + h * 0.06) + " " + (y - h * 0.62) + " L" + (x - h * 0.08) + " " + (y - h * 0.72) + " Z", style: "fill: var(--yuzey)" }, zemin);
+  });
+  // Ötüken yışı: ormanlı dağlar ve ağaçlar
+  [[500, 120, 66], [566, 96, 74], [612, 140, 56], [450, 150, 44]].forEach(function (d) {
+    var x = d[0], y = d[1], h = d[2];
+    el("path", { d: "M" + (x - h * 0.9) + " " + y + " Q" + x + " " + (y - h * 1.3) + " " + (x + h * 0.9) + " " + y + " Z", style: "fill: var(--yuzey-2); stroke: var(--murekkep-2); stroke-width: 1.2" }, zemin);
+  });
+  for (var t = 0; t < 30; t++) {
+    var tx = 420 + (t * 41) % 210, ty = 150 + (t * 29) % 92;
+    el("path", { d: "M" + tx + " " + ty + " l-7 14 h14 Z M" + tx + " " + (ty + 7) + " l-8 14 h16 Z", style: "fill: var(--orman)" }, zemin);
+  }
+  // Orhun suyu
+  el("path", { d: "M640 230 C600 236 580 210 548 214 S 500 252 470 262 S 430 300 420 336", style: "fill: none; stroke: var(--nehir); stroke-width: 5; stroke-linecap: round; opacity: 0.85" }, zemin);
+  el("text", { x: 556, y: 248, "class": "bolge", style: "font-size: 13px; letter-spacing: 0.12em" }, zemin).textContent = "Orhun";
+
+  var DURAKLAR = [
+    { x: 70, y: 318, no: "P", etiket: "Demir Dağ", ex: 14, ey: 30, kas: "Prolog", baslik: "Demir Dağ ve Vadi", metin: "Ulağın oku vadiye düşer, demirciler dağı eritir. Ocak Ata koru verir, ulak Kağan'ın oklarını sıradan bir askere uzatır. Kervan yola çıkar.", boy: "Demir Dağ obası", dert: "Kızıl gökyüzünün çektiği yağılar", durum: "Erken erişimde", hedef: "#prolog" },
+    { x: 182, y: 222, no: "1", etiket: "Yelbeğen Geçidi", ex: -40, ey: -22, kas: "Birinci bölüm · 9 konak", baslik: "Altay'ın Karı", metin: "Karlı geçitlerde dağınık ocaklar. Gök Börü ilk kez görünür ve dar geçidi gösterir. Çok başlı dev dağılınca Kar Boyu közünü kor kabına katar.", boy: "Kar Boyu", dert: "Yelbeğen, çok başlı dev", durum: "Erken erişimde", hedef: "#bolum-1" },
+    { x: 330, y: 276, no: "2", etiket: "Tepegöz Ovası", ex: -50, ey: 34, kas: "İkinci bölüm · 9 konak", baslik: "Yılkı Bozkırı", metin: "Uçsuz bucaksız bozkır, yılkı sürüleri ve terk edilmiş kışlaklar. Haraç isteyen tek göz kapanınca Yılkı Boyu sürüleriyle katılır. Ordu ve taktikler burada açılır.", boy: "Yılkı Boyu", dert: "Tepegöz, haraç isteyen tek göz", durum: "Güncellemeyle gelir", hedef: "#bolum-2" },
+    { x: 470, y: 196, no: "3", etiket: "Ötüken Eşiği", ex: -118, ey: -14, kas: "Üçüncü bölüm · 9 konak", baslik: "Ötüken'in Eşiği", metin: "Ormanlı dağlar, Orhun geçidi ve ata taşları. Geri dönmek isteyenler olur; “Kimse gelmedi” fısıltısı susunca Yış Boyu katılır ve Ötüken'in kapısı açılır.", boy: "Yış Boyu", dert: "Erlik'in Elçisi, soğuk fısıltı", durum: "Güncellemeyle gelir", hedef: "#bolum-3" },
+    { x: 584, y: 112, no: "T", etiket: "Toy", ex: -14, ey: 34, kas: "Son", baslik: "Ötüken'de toy", metin: "Boylar okunu Kağan'ın sadağına koyar, korlar tek ocakta birleşir ve El kurulur. Çağrıyı taşıyan asker bey olur.", boy: "Bütün boylar", dert: "Yok; yol biter, ocak kalır", durum: "Güncellemeyle gelir", hedef: "#toy" }
+  ];
+  var durakG = $("#harita-duraklar"), durakListe = $("#durak-listesi"), durakEl = [], durakDugme = [];
+  function durakSec(i) {
+    var d = DURAKLAR[i];
+    durakEl.forEach(function (g, j) { g.classList.toggle("etkin", j === i); g.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    durakDugme.forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    $("#hp-kas").textContent = d.kas;
+    $("#hp-baslik").textContent = d.baslik;
+    $("#hp-metin").textContent = d.metin;
+    $("#hp-boy").textContent = d.boy;
+    $("#hp-dert").textContent = d.dert;
+    $("#hp-durum").textContent = d.durum;
+  }
+  DURAKLAR.forEach(function (d, i) {
+    var g = el("g", { "class": "durak", tabindex: "0", role: "button", "aria-label": d.etiket + ": " + d.baslik, "aria-pressed": "false" }, durakG);
+    el("circle", { "class": "halka", cx: d.x, cy: d.y, r: 15 }, g);
+    var no = el("text", { "class": "no", x: d.x, y: d.y, "text-anchor": "middle", "dominant-baseline": "central" }, g); no.textContent = d.no;
+    var et = el("text", { "class": "etiket", x: d.x + d.ex, y: d.y + d.ey }, g); et.textContent = d.etiket;
+    g.addEventListener("click", function () { durakSec(i); });
+    g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); durakSec(i); } });
+    durakEl.push(g);
+    var li = document.createElement("li"), b = document.createElement("button");
+    b.type = "button"; b.textContent = d.no === "P" ? "Prolog" : d.no === "T" ? "Toy" : "Bölüm " + d.no;
+    b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", function () { durakSec(i); });
+    li.appendChild(b); durakListe.appendChild(li); durakDugme.push(b);
+  });
+  durakSec(0);
+
+  /* ---------- Döngü göstergesi ---------- */
+  var EVRE = [
+    { pay: 0.5, renk: "var(--altin)" },
+    { pay: 0.1, renk: "var(--kor)" },
+    { pay: 0.32, renk: "var(--murekkep)" },
+    { pay: 0.08, renk: "var(--nehir)" }
+  ];
+  var cevre = 2 * Math.PI * 84, bas = 0, ortalar = [];
+  var yaylar = $("#dongu-yaylar");
+  EVRE.forEach(function (ev) {
+    var uz = ev.pay * cevre;
+    el("circle", { "class": "yay", cx: 110, cy: 110, r: 84, style: "stroke: " + ev.renk + "; stroke-dasharray: " + (uz - 3).toFixed(1) + " " + (cevre - uz + 3).toFixed(1) + "; stroke-dashoffset: " + (-bas).toFixed(1) + "; transform: rotate(-90deg); transform-origin: 110px 110px" }, yaylar);
+    ortalar.push(((bas + uz / 2) / cevre) * 360);
+    bas += uz;
+  });
+  var evreDugmeleri = $$("#evre-dugmeleri button"), evreKutulari = [0, 1, 2, 3].map(function (i) { return $("#evre-" + i); });
+  var donus = 0;
+  function evreSec(i, kaydirma) {
+    var hedef = ortalar[i];
+    var simdi = ((donus % 360) + 360) % 360;
+    var fark = hedef - simdi; if (fark < 0) fark += 360;
+    donus += fark;
+    $("#dongu-isaret").style.transform = "rotate(" + donus + "deg)";
+    evreDugmeleri.forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    evreKutulari.forEach(function (k, j) { k.classList.toggle("etkin", j === i); });
+    if (kaydirma) {
+      var r = evreKutulari[i].getBoundingClientRect();
+      if (r.top < 60 || r.bottom > window.innerHeight) evreKutulari[i].scrollIntoView({ block: "nearest", behavior: azHareket ? "auto" : "smooth" });
+    }
+  }
+  var zamanlayici = null;
+  function izlemeyiDurdur() { if (zamanlayici) { clearInterval(zamanlayici); zamanlayici = null; $("#dongu-izle").textContent = "Döngüyü izle"; } }
+  evreDugmeleri.forEach(function (b, i) { b.addEventListener("click", function () { izlemeyiDurdur(); evreSec(i, true); }); });
+  $("#dongu-izle").addEventListener("click", function () {
+    if (zamanlayici) { izlemeyiDurdur(); return; }
+    var adim = 0;
+    $("#dongu-izle").textContent = "Durdur";
+    evreSec(0, false);
+    zamanlayici = setInterval(function () {
+      adim++;
+      if (adim > 4) { izlemeyiDurdur(); return; }
+      evreSec(adim % 4, false);
+    }, 1800);
+  });
+  evreSec(0, false);
+})();
+</script>
+
+<p class="site-alt"><a href="gizlilik/">Gizlilik politikası</a> · <a href="privacy/">Privacy policy</a> · © 2026 Conak Soft LLC</p>
+</body>
+</html>
