@@ -554,6 +554,7 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
 .evre li { font-size: var(--olcek-1); line-height: 1.5; }
 .evre li b { font-family: var(--yazi-arayuz); font-weight: 600; }
 .evre.genis { grid-column: 1 / -1; }
+.evre.yalin { grid-template-columns: minmax(0, 1fr); }
 
 /* Sözlük */
 .sozluk { margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 12px; }
@@ -581,7 +582,7 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
 .madde dd.oyunda { font-family: var(--yazi-arayuz); font-size: var(--olcek-0); color: var(--murekkep-2); border-top: 1px dashed var(--cizgi); padding-top: 6px; }
 .madde dd.oyunda b { color: var(--murekkep); font-weight: 600; }
 
-/* Tarihten + erken erişim */
+/* Tarihten + yapım durumu */
 .tarih-kutu { display: grid; gap: 24px; }
 @media (min-width: 900px) { .tarih-kutu { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; } }
 .kenar-notu {
@@ -650,6 +651,7 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
         <li><a href="#hikaye">Hikâye</a></li>
         <li><a href="#toy">Toy</a></li>
         <li><a href="#yol">Yol haritası</a></li>
+        <li><a href="#sefer">Otağ ve sefer</a></li>
         <li><a href="#oyun">Nasıl oynanır</a></li>
         <li><a href="#sozluk">Sözlük</a></li>
         <li><a href="#tarihten">Tarihten</a></li>
@@ -664,10 +666,10 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
   <section class="acilis gece-alan" id="acilis" aria-labelledby="ad-baslik">
     <h1 id="ad-baslik"><img src="img/logo-kagan-cagiriyor.webp" width="820" height="771" alt="Kağan Çağırıyor: Ötüken'e Doğru"></h1>
     <div class="acilis-metin">
-      <p class="kas">Bir göç destanı · Erken erişim · Android</p>
+      <p class="kas">Bir göç destanı · Yapım aşamasında · Android</p>
       <p class="ozan-giris"><b>Dedem Korkut der ki:</b> kopuzumu alayım, size dağın içinden çıkıp Ötüken'e yürüyen bir obayı anlatayım. Kimse geride kalmadı; ben de anlatırken kimseyi geride bırakmayacağım.</p>
-      <p>Ulu Kağan dağınık Türk boylarını Ötüken'deki toyuna çağırır. Çağrıyı taşıyan bir bey değil, sıradan bir askerdir: küçük bir birlikle karlı geçitlerde, bozkırda ve karanlık ormanda dağınık aileleri bulur, onları Kağan'a sağ salim ulaştırır.</p>
-      <p class="ince">Bu sayfa hem bir okuma parçası hem de oyunun kısa bir tanıtımıdır. Aşağıda kahramanı seç ve ona bir ad ver; anlatıdaki ad her yerde değişir. Altı çizili sözcüklere dokununca kısa açıklamaları açılır.</p>
+      <p>Ulu Kağan dağınık Türk boylarını Ötüken'deki toyuna çağırır ve orada bekler; sözünü <button type="button" class="terim" data-terim="ulak">ulak</button>larıyla yollar. Yola çıkan bir bey değil, sıradan bir askerdir: küçük bir birlikle karlı geçitlerde, bozkırda ve karanlık ormanda dağınık aileleri bulur, onları ileri karargâhı <button type="button" class="terim" data-terim="otag">Otağ</button>'a sağ salim getirir. Yol Ötüken'de biter.</p>
+      <p class="ince">Bu sayfa hem bir okuma parçası hem de oyunun kısa bir tanıtımıdır. Aşağıda kahramanı seç ve ona bir ad ver; anlatıdaki ad her yerde değişir. Altı çizili sözcüklere dokununca kısa açıklamaları açılır. Oyun yapım aşamasındadır; burada anlatılan, tam sürümün tasarlanan yapısıdır.</p>
 
       <fieldset class="secim">
         <legend>O gün kor kabını kim taşıdı?</legend>
@@ -695,7 +697,7 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
     <div class="kisim-bas">
       <p class="kas">Ozanın anlattığı</p>
       <h2 id="hikaye-baslik">Hikâye</h2>
-      <p>Prologla başlar, üç boyla sürer, Ötüken'deki toyla biter. Her bölümde bir boy vardır ve o boyun bir derdi; dert, bölümün sonunda karşına çıkan büyük düşmandır.</p>
+      <p>Prologla başlar, üç boyla sürer, Ötüken'deki toyla biter. Her bölümde bir <button type="button" class="terim" data-terim="boy">boy</button> vardır ve o boyun bir yarası; yara, bölümün sonunda karşına çıkan büyük düşmandır. Üç büyük düşman da eski anlatılardan esinlenen varlıklardır; hiçbiri bir halkı temsil etmez.</p>
     </div>
     <div class="kilim" aria-hidden="true"></div>
 
@@ -708,9 +710,9 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
         <p>Anlatıya göre bir <button type="button" class="terim" data-terim="oba">oba</button>, Ergenekon dedikleri dar vadide dört yüz yıl yaşamış. Çevresi dağ duvarıydı; içi sıcak, dışı bilinmezdi. Sonraki anlatıcılar orayı kısaca Demir Dağ ve Vadi diye anar.</p>
         <p>Bir sabah dağın öte yanından bir ok aşıp vadiye düştü. Onu Ulu <button type="button" class="terim" data-terim="kagan">Kağan</button>'ın ulağı fırlatmıştı; bu bir çağrı okuydu. Demirciler “Çağrıyı duyduk” dedi. Körükler uğuldadı, ateş yükseldi, Demir Dağ eriyip aktı.</p>
         <p>Kapı açılınca gökyüzü kızıl yandı. O ışık çok uzaktan görüldü derler. Aç <button type="button" class="terim" data-terim="yagi">yağıları</button> da, <button type="button" class="terim" data-terim="erlik">Erlik</button>'in karanlıktan gelen yaratıklarını da obanın üstüne çekti. Halk ikiye bölündü: kalanlar ve gidenler. Yaşlı Ocak Ata vadide kalmayı seçti; ana ateşten bir <button type="button" class="terim" data-terim="kor">kor</button> alıp demir kor kabına koydu ve gidenlere verdi: “Ben vadinin sıcağını sevdim. Siz yolun soğuğunu sevin.”</p>
-        <p>Kapıda ulak bekliyordu; yüzü başlığıyla örtülü, atı terli. Obanın genç askerlerine baktı, birini seçti ve eline Kağan'ın oklarıyla dolu bir <button type="button" class="terim" data-terim="sadak">sadak</button> verdi. Yolda bulunacak her <button type="button" class="terim" data-terim="boy">boya</button> bir ok düşüyordu.</p>
+        <p>Kapıda ulak bekliyordu; yüzü başlığıyla örtülü, atı terli. Obanın genç askerleri sıra olmuş, hepsi ileriye, kapıya bakıyordu. Yalnız biri bir an geriye döndü: vadide, ocağın yanında kalan Ocak Ata'ya baktı. Ulak bunu gördü, başını yarım eğdi ve onu seçti. Eline deri bir <button type="button" class="terim" data-terim="sadak">sadak</button> verdi; ağzı açıktı, içi boştu. Her aile sağ salim vardıkça içine bir ok girecekti.</p>
         <p class="soz">“<span data-ad>Asker</span>! Dağınık aileleri topla, kimseyi geride bırakma. Kağan Ötüken'de bekler.” <span class="imza">ulak</span></p>
-        <p>Seçilen ne bey ne de bir kağan soyundandı. Yayını iyi çeken, atını iyi süren sıradan bir askerdi. Yanında birkaç atlı, arkasında <button type="button" class="terim" data-terim="kagni">kağnılar</button>, kağnıda kor kabı vardı. Yol uzundu.</p>
+        <p>Seçilen ne bey ne de bir kağan soyundandı. Yayını iyi çeken, atını iyi süren sıradan bir askerdi. Arkasında obanın <button type="button" class="terim" data-terim="kagni">kağnıları</button>, kağnıda kor kabı vardı. Yol uzundu.</p>
         <p class="soz">“Bu yük benim değil, hepimizin; ben yalnız önde yürüyorum.” <span class="imza">— <span data-ad>Asker</span></span></p>
       </div>
       <aside class="kenar" aria-label="Prolog görselleri">
@@ -727,15 +729,18 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
         <header class="anlati-bas">
           <p class="kas">Birinci bölüm · Altay'ın Karı</p>
           <h3 id="b1-baslik">Kar Boyu ve Yelbeğen</h3>
-          <div class="cipler"><span class="cip simdi">Erken erişimde oynanır</span><span class="cip">9 konak</span></div>
+          <div class="cipler"><span class="cip simdi">İlk oynanan bölüm</span><span class="cip">9 konak</span></div>
         </header>
-        <p>Altay'ın karı kırk gün yağar, kırk gün bakar. Rüzgâr <button type="button" class="terim" data-terim="ocak">ocağı</button> yalar geçer; kor <button type="button" class="terim" data-terim="tezek">tezekle</button> yaşar. Gündüz kervan yürür, kahraman çevrede yakacak toplar, yabani atları <button type="button" class="terim" data-terim="kement">kementle</button> çeker. Akşam kağnılar halka olur, gece ocağın ışığı halkı korur.</p>
-        <p>Karın altında dağınık ocaklar var derler. Kar Boyu'nun obaları birbirinden habersiz, korku içinde tek tek donuyordu. Donmuş Dere'de boyun öncü ailesi bulundu; kervana katıldılar ve kor kabının ışığında ısındılar.</p>
+        <p>Altay'ın karı kırk gün yağar, kırk gün bakar. Karın eteğinde <button type="button" class="terim" data-terim="otag">Otağ</button> kuruldu: kahramanın ileri karargâhı. Rüzgâr <button type="button" class="terim" data-terim="ocak">ocağı</button> yalar geçer; kor <button type="button" class="terim" data-terim="tezek">tezekle</button> yaşar. Ötüken uzaktı, ama ocak yandı, kapı açık kaldı.</p>
+        <p>Ulu Kağan Ötüken'de bekliyordu ve sözünü <button type="button" class="terim" data-terim="ulak">ulak</button>larıyla yolluyordu. Getirdikleri her haber Otağ'ın masasında bir ok oldu: kar altında bir ocağı, bir sesi, bir yolu gösteriyordu. Her habere <button type="button" class="terim" data-terim="cagri">çağrı</button>, çağrının yolculuğuna <button type="button" class="terim" data-terim="sefer">sefer</button> derler.</p>
+        <p>Üç çağrı vardı: Ak Kaya'da tipiye kalıp atlarını bırakmayan yılkıcılar, Kayın Dere'de kapısını açmayan bir nine ile torunları, Maral Yurdu'nda izlerini silip saklanan avcılar. <span data-ad>Asker</span> her seferde yanına Manas'ı, Gökçe'yi ve Kıvılcım'ı aldı, arkasına bir onluk atlı kattı; kervan yok, yük yok, yol hafifti. Yolda pusu vardı: kuşlar havalandı, toz kalktı. Aileyi bulup kendi kervanıyla Otağ'a getirdi; her varışta sadağa bir ok girdi, küçük, kar mavisi tüylü.</p>
+        <p>Kar Boyu geçit bilirdi; tipide kor sönmesin diye közü külle örtüp karın içine gömmek en eski hünerleriydi. Demir Dağ eriyip gökyüzü kızıl yanınca ışık geçidin altına düştü ve karanlıkta bir şey kıpırdadı. Boy ona Gözcü der, adını anmaz: Gözcü kimseye dokunmadı, yalnız baktı; baktığı ocağın ışığı daraldı. Boy duman tüttürmeyi, birbirini aramayı bıraktı; ocaklarını karın altına gömdü. Çağrıyı reddettikleri için değil: ok onlara hiç ulaşmamıştı. Boyun bütün isteği birdi: biri gelsin, ocağımızı görsün.</p>
         <p>Rüzgâr Sırtı'nı geçince bir tepede gök renkli bir kurt belirdi. <button type="button" class="terim" data-terim="gokboru">Gök Börü</button> hiç konuşmadı; yalnız baktı ve dar geçidi gösterdi. O günden sonra gece bastırınca ruh kurtları obanın yanında koştu.</p>
-        <p>Geçidi çok başlı bir dev tutuyordu: Yelbeğen. Her başı ayrı bir yöne bakar; hiçbiri ötekini görmez. Dağınıklığın ta kendisiydi. Dev kar olup dağılınca geçit açıldı. Kar Boyu ocaklarını tüttürdü, közlerini kor kabına kattı. Boyun yaşlısı Kağan'ın okunu kuşağına soktu; onu Ötüken'de sadağa koyacaktı.</p>
+        <p>Geçidi çok başlı bir dev tutuyordu: Yelbeğen. Altay anlatılarında Yelbeğen güneşi de ayı da yutar, yolunu şaşıranı yeraltına çağırır; Erlik'in hizmetkârı derler. Her başı ayrı bir yöne bakar, hiçbiri ötekini görmez: dağınıklığın ta kendisi. <span data-ad>Asker</span> geçide ocağı büyük yakarak çıktı, bakılmaktan korkmadı. Üç baş ilk kez aynı yöne, ocağa eğildi; dev kar olup dağıldı.</p>
+        <p>Geçit açılınca Kar Boyu ocaklarını tüttürdü ve birbirinin dumanını ilk kez gördü. Közlerini kor kabına kattı; soğukta iki renk yandı. Boyun yaşlısı boyun okunu kuşağına soktu: ok Otağ'a varınca sadağa girecekti.</p>
         <div class="dert">
           <h4>Boyun derdi: Yelbeğen</h4>
-          <p>Bölümün dokuzuncu konağında, gece gelir. Üç baş sırayla saldırır ve saldırının ineceği yer önceden yerde parlar. Saldırısını indiren baş bir süre açık kalır; altın halkayı gördüğün an vur. Üç baş da düşünce dev dağılır.</p>
+          <p>Bölümün dokuzuncu konağında, gece gelir; boy çağrısında Otağ'ın kendisi yola çıkar, halk ve ordu birlikte yürür. Üç baş sırayla saldırır ve saldırının ineceği yer önceden yerde parlar. Saldırısını indiren baş bir süre açık kalır; altın halkayı gördüğün an vur. Üç baş da düşünce dev dağılır. Yelbeğen eski bir anlatıdan gelir ve hiçbir halkı temsil etmez; o, boyun bakılmak korkusunun kişileşmesidir.</p>
         </div>
       </div>
       <aside class="kenar" aria-label="Birinci bölüm görselleri">
@@ -756,14 +761,16 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
         <header class="anlati-bas">
           <p class="kas">İkinci bölüm · Yılkı Bozkırı</p>
           <h3 id="b2-baslik">Yılkı Boyu ve Tepegöz</h3>
-          <div class="cipler"><span class="cip sonra">Güncellemeyle gelir</span><span class="cip">9 konak</span></div>
+          <div class="cipler"><span class="cip sonra">Tam sürümle gelir</span><span class="cip">9 konak</span></div>
         </header>
-        <p>Dağ geride kaldı; önde ucu bucağı olmayan bozkır uzanıyordu. Yılkı sürüleri toz kaldırır; her at bir yoldaş, her yoldaş bir ok. Oba artık kalabalıktı ve kalabalık hem güçtür hem yüktür. Terk edilmiş kışlaklarda kalmış aileler bulundu, başka bir göçebe obayla ortak ateş yakıldı.</p>
-        <p>Yılkı Boyu sürüleriyle yaşar. Ama bozkırda tek bir göz açılmıştı; sürüleri sayıyor, saydığını haraç istiyordu. Haraç yolunda adsız bir yağı beyinin adamları “yükünün yarısını ver” dedi. Kam Ece o gece rüyasında tek bir göz gördü.</p>
-        <p>Tepegöz toza karışınca haraç kapısı kapandı. Yılkı Boyu sürüleriyle yürüyüşe katıldı, közünü ocağa kattı. Oba artık küçük değildi. Bir sabah ufukta ormanlı dağlar mavi mavi göründü.</p>
+        <p>Dağ geride kaldı; Otağ söküldü, bir sabah sonra bozkırda yine kuruldu: Bozkır Otağı, Ötüken'e bir adım yakın. Ulağın yolu kısalmıştı; sadakta mavi oklar dinlenirken masaya toprak sarısı tüylü yeni oklar yatırıldı. Önde ucu bucağı olmayan bozkır uzanıyordu. Oba artık kalabalıktı ve kalabalık hem güçtür hem yüktür. Terk edilmiş kışlaklarda, tuz kıyısında, susmuş bir ortak ateşte kalmış aileler vardı.</p>
+        <p><button type="button" class="terim" data-terim="yilki">Yılkı</button> Boyu sürüleriyle yaşar; her atın bir adı vardır ve adı olan at sayıdan çıkar derler. Bozkırda bir göz açılınca her şafakta ufukta amber bir ışık dolaşmaya başladı: ışığın altındaki sürü sayılır, sayılanın yarısı haraca gider. Küçük sürünün haracı da küçüktür diye boy kendi eliyle parçalandı; haracı herkes sessizce ödedi, kimse kimseye söylemedi.</p>
+        <p>Ozan Tepegöz'ün doğuşunu iki türlü anlatır, hangisinin doğru olduğunu kopuzu bilmez. Dede Korkut'un anlatısında tek gözlü bir çoban oğludur; Yılkı Boyu'na göre doğmadı, sayıldı: her akşam sayılan sayılar bir yerde birikti ve tek göz açıldı. Çoban da sürüsünü her akşam sayar, ama kimse eksik mi diye. Aynı sayma, ters niyet.</p>
+        <p>Haraç yolunda adsız bir yağı beyinin adamları “yükünün yarısını ver” dedi. Haraç yalnız maldır; yağı beyi de aç ve sıkışıktı, o da bir yerde ödüyordu. Kam Ece o gece rüyasında tek bir göz gördü.</p>
+        <p>Tepegöz toza karışınca haraç kapısı kapandı. Yılkı Boyu atlarını tek tek adıyla çağırdı; sayıyla değil adla çağrılan at başını kaldırır derler. Dağılmış küçük sürüler birleşti, boy közünü ocağa kattı, büyük oku sadağa girdi. Oba artık küçük değildi. Bir sabah ufukta ormanlı dağlar mavi mavi göründü.</p>
         <div class="dert">
           <h4>Boyun derdi: Tepegöz</h4>
-          <p>Tek gözün baktığı yön kalkanlıdır; yanından ve arkasından vurmak gerekir. Bu bölümde ordu da büyür: atlı okçular, çift kılıçlı atlılar ve emri senin verdiğin taktikler.</p>
+          <p>Tek gözün baktığı yön kalkanlıdır; yanından ve arkasından vurmak gerekir. Yılkı Boyu'nun eski sözü de bunu söyler: sıraya giren sayılır, yan yana yürüyen sayılmaz. Tepegöz eski bir anlatıdan gelir ve hiçbir halkı temsil etmez; o, boyun utancının ve sayılma korkusunun gölgesidir. Bu bölümde ordu da büyür: atlı okçular, çift kılıçlı atlılar ve emri senin verdiğin düzenler.</p>
         </div>
       </div>
       <aside class="kenar" aria-label="İkinci bölüm notu">
@@ -776,14 +783,15 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
         <header class="anlati-bas">
           <p class="kas">Üçüncü bölüm · Ötüken'in Eşiği</p>
           <h3 id="b3-baslik">Yış Boyu ve Erlik'in Elçisi</h3>
-          <div class="cipler"><span class="cip sonra">Güncellemeyle gelir</span><span class="cip">9 konak</span></div>
+          <div class="cipler"><span class="cip sonra">Tam sürümle gelir</span><span class="cip">9 konak</span></div>
         </header>
-        <p>Son yol en uzun yoldur derler; çünkü varmaya yaklaştıkça insan geri bakar. Kıvılcım “Vadiye dönsek?” diye sordu. Bazı aileler gerçekten dönmek istedi; kimi ikna edildi, kimiyle vedalaşıldı.</p>
-        <p><button type="button" class="terim" data-terim="yis">Yışın</button> dibinde Yış Boyu bekliyordu. Kağan'ın çağrısını yıllardır bekleyen dağınık ocaklardı bunlar ve umutlarını yitirmek üzereydiler. Rüzgâr fısıldadı: “Kimse gelmedi, kimse gelmeyecek.” Bu fısıltının sahibi Erlik'in Elçisi'ydi.</p>
-        <p>Orhun geçidinde Gök Börü son kez yolu gösterdi. Ata taşlarının dizildiği yolda biri “Bizden önce de buradan geçenler olmuş” dedi. Ufukta Kağan'ın ocağının ışığı görünüyordu. Elçi dağılınca fısıltı sustu; Yış Boyu közünü ocağa kattı ve Ötüken'in kapısı açıldı.</p>
+        <p>Son yol en uzun yoldur derler; çünkü varmaya yaklaştıkça insan geri bakar. Otağ Ötüken'in alçak yamacına kuruldu ve Kağan'ın sözü artık yarım günde geliyordu. Kıvılcım “Vadiye dönsek?” diye sordu. Bazı aileler gerçekten dönmek istedi; kimse zorlanmadı, kimse yargılanmadı. <span data-ad>Asker</span> yürüyüşün en sonuna geçip geriye baktı: özlemle değil, saymak için.</p>
+        <p><button type="button" class="terim" data-terim="yis">Yışın</button> dibinde Yış Boyu bekliyordu. Kağan'ın çağrısını ilk duyan boy onlardı; ulaklar “yakında gelirler” dedi ve gitti. Boy yol ocağını yaktı ve bekledi: bir kış geçti, bir kış daha. Rüzgâr fısıldadı: “Kimse gelmedi, kimse gelmeyecek.” Her kış bir aile batıya yürüdü; boy dağılmadı, boşaldı.</p>
+        <p>Fısıltının sahibi Erlik'in Elçisi'ydi. Anlatıya göre Erlik, Ülgen'le eşit olmak isteyip ayrılan kardeştir; ozan der ki, Elçi o ilk ayrılığın sözünü rüzgârda taşıyan bir sestir. Yüzü yoktur; kimseye dokunmaz, yalnız fısıldar. Fısıltı yalan söylemez, yalnız yarını eksik söyler.</p>
+        <p>Orhun geçidinde Gök Börü son kez yolu gösterdi. Ata taşlarının dizildiği yolda biri “Bizden önce de buradan geçenler olmuş” dedi. Ufukta Kağan'ın ocağının ışığı görünüyordu. Elçi ocağa baktı; içinde vadinin, karın ve bozkırın közünü gördü ve fısıldayacak bir şey bulamadı. Boyun yaşlı bekçisi bekleme ateşinden bir kor aldı: “Geç geldiniz, ama geldiniz.” Yış Boyu közünü ocağa kattı, büyük oku sadağa girdi ve Ötüken'in kapısı açıldı.</p>
         <div class="dert">
           <h4>Boyun derdi: Erlik'in Elçisi</h4>
-          <p>Elçi ışığa dayanıklıdır ve ocağı söndürmeye gelir. Ona karşı korun kendisi gerekir: her boyun közü ocakta birlikte yanar.</p>
+          <p>Elçi ışığa dayanıklıdır ve ocağı söndürmeye gelir. Ona karşı korun kendisi gerekir: her boyun közü ocakta birlikte yanar. Elçi bir ruhtur ve hiçbir halkı temsil etmez; fısıltısı yalnız hatırlatır, seni zorlamaz.</p>
         </div>
       </div>
       <aside class="kenar" aria-label="Üçüncü bölüm notu">
@@ -796,11 +804,11 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
         <header class="anlati-bas">
           <p class="kas">Son · Ötüken</p>
           <h3 id="toy-baslik">Ötüken'de toy</h3>
-          <div class="cipler"><span class="cip sonra">Güncellemeyle gelir</span></div>
+          <div class="cipler"><span class="cip sonra">Tam sürümle gelir</span></div>
         </header>
         <p>Sabah ışık <button type="button" class="terim" data-terim="otuken">Ötüken</button>'in ormanlı dağına düştü; Orhun gümüş gibi aktı. Kağan'ın otağının önünde ocaklar tütüyordu: dört yana dağılmış boylar <button type="button" class="terim" data-terim="toy">toya</button> gelmişti. Kağan'ın başka ulakları da yola çıkmış derler; kimi doğudan, kimi batıdan, kimi kuzeyden, kimi güneyden geldi. Hiçbiri geride kalmamıştı.</p>
-        <p>Her boy, yolda kendisine iletilen oku Kağan'ın sadağına koydu ve közünü Kağan'ın ocağına kattı. Usta Tunç demir ocak halkasını yerine oturttu, Kıvılcım ilk tezeği attı. Tek ok kırılır, dolu sadak kırılmaz derler. Korlar tek ocakta birleşti; <button type="button" class="terim" data-terim="el">El</button> böyle kuruldu.</p>
-        <p>Ulu Kağan'ın yüzü ocağın ışığında gölgede kaldı. Tek bir cümle söyledi, sonra çağrıyı taşıyan askeri yanına çağırdı. Sıradan bir asker o gün <button type="button" class="terim" data-terim="bey">bey</button> oldu: Kağan ona bir yurdun yönetimini verdi. Kor bu kez yol için değil, hepimiz için yandı.</p>
+        <p>Asker sadağı ayakta, iki eliyle Kağan'ın ocağının önüne koydu: içinde yolda alınan her ailenin, her boyun oku vardı. Dört yönden gelen boylar da oklarını sadağa kattı, közlerini Kağan'ın ocağına verdi. Usta Tunç demir ocak halkasını yerine oturttu, Kıvılcım ilk tezeği attı. Tek ok kırılır, dolu sadak kırılmaz derler. Korlar tek ocakta birleşti; <button type="button" class="terim" data-terim="el">El</button> böyle kuruldu.</p>
+        <p>Ulu Kağan'ın yüzü ocağın ışığında gölgede kaldı. Önce herkese seslendi; sonra bakışı kalabalığı taradı ve en geride duran askerde durdu. Kağan onu adıyla yanına çağırdı. Sıradan bir asker o gün <button type="button" class="terim" data-terim="bey">bey</button> oldu: Kağan ona bir yurdun yönetimini verdi. Kor bu kez yol için değil, hepimiz için yandı.</p>
         <p class="soz">Dedem Korkut der ki: yol biter, ocak kalır. <span class="imza">ozan</span></p>
       </div>
       <aside class="kenar" aria-label="Toy görseli">
@@ -844,19 +852,19 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
       </div>
       <div class="toy-yan">
         <h4 id="sadak-baslik">Sadak dolsun</h4>
-        <p>Her dokunuşta bir boy Kağan'a varır: okunu sadağa koyar, közünü ocağa katar. Sekiz ok, sekiz kor, tek ocak.</p>
+        <p>Sadak boş başlar. Her dokunuşta bir boy Kağan'ın ocağına varır: okunu sadağa katar, közünü ocağa verir. Sekiz ok, sekiz kor, tek ocak; oyundaki sadakta ok sayısı daha çoktur, burada simgedir.</p>
         <div class="toy-dugmeler">
           <button type="button" class="dugme" id="sadak-ileri">Bir boy daha vardı</button>
           <button type="button" class="dugme ikincil" id="sadak-bastan">Baştan</button>
         </div>
         <div class="kaydir">
-          <label for="sadak-sayi">Varan boy sayısı: <b id="sadak-sayi-yazi">1</b> / 8</label>
-          <input type="range" id="sadak-sayi" min="1" max="8" step="1" value="1">
+          <label for="sadak-sayi">Varan boy sayısı: <b id="sadak-sayi-yazi">0</b> / 8</label>
+          <input type="range" id="sadak-sayi" min="0" max="8" step="1" value="0">
         </div>
         <ol class="gelenler" id="gelenler" aria-label="Toya varan boylar"></ol>
-        <p class="toy-durum" id="toy-durum" aria-live="polite">Demir Dağ obası çağrı okunu sadağa koydu, közünü ocağa kattı.</p>
+        <p class="toy-durum" id="toy-durum" aria-live="polite">Sadak boş: ulak onu böyle verdi. Ağzı açık, içi bekliyor.</p>
         <div class="bey-muhur bekliyor" id="bey">
-          <p class="kagan-soz" id="bey-soz">Sadak dolunca Ulu Kağan konuşur.</p>
+          <p class="kagan-soz" id="bey-soz">Sadak dolunca Ulu Kağan konuşur. Daha 8 boy yolda.</p>
           <p class="unvan"><span data-ad>Asker</span> · <span id="bey-unvan">çağrının taşıyıcısı</span></p>
         </div>
       </div>
@@ -869,7 +877,7 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
     <div class="kisim-bas">
       <p class="kas">Altay'dan Ötüken'e</p>
       <h2 id="yol-baslik">Yol haritası</h2>
-      <p>Yol batıda Altay'ın karlı geçitlerinden başlar, bozkırı aşar ve doğuda Ötüken'in ormanlı dağlarında biter. Bir durağa dokun, o bölümün özeti açılsın.</p>
+      <p>Yol batıda Altay'ın karlı geçitlerinden başlar, bozkırı aşar ve doğuda Ötüken'in ormanlı dağlarında biter. Her bölümde Otağ bir adım ileri taşınır. Bir durağa dokun, o bölümün özeti açılsın.</p>
     </div>
     <div class="harita-kutu">
       <div class="harita">
@@ -885,14 +893,83 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
       <div class="harita-panel" id="harita-panel" aria-live="polite">
         <p class="kas" id="hp-kas">Prolog</p>
         <h3 id="hp-baslik">Demir Dağ ve Vadi</h3>
-        <p id="hp-metin">Ulağın oku vadiye düşer, demirciler dağı eritir. Ocak Ata koru verir, ulak Kağan'ın oklarını sıradan bir askere uzatır. Kervan yola çıkar.</p>
+        <p id="hp-metin">Ulağın oku vadiye düşer, demirciler dağı eritir. Ocak Ata koru verir; ulak sıradan bir askere boş bir sadak uzatır. Oba yola çıkar.</p>
         <dl>
           <dt>Boy</dt><dd id="hp-boy">Demir Dağ obası</dd>
           <dt>Dert</dt><dd id="hp-dert">Kızıl gökyüzünün çektiği yağılar</dd>
-          <dt>Durum</dt><dd id="hp-durum">Erken erişimde</dd>
+          <dt>Otağ</dt><dd id="hp-otag">Henüz kurulmadı; oba yürüyor</dd>
+          <dt>Durum</dt><dd id="hp-durum">Oyunda</dd>
         </dl>
         <ul class="durak-listesi" id="durak-listesi" aria-label="Duraklar"></ul>
       </div>
+    </div>
+  </section>
+
+  <div class="kilim" aria-hidden="true" style="margin-top: 56px"></div>
+
+  <section class="kisim" id="sefer" aria-labelledby="sefer-baslik">
+    <div class="kisim-bas">
+      <p class="kas">Otağ'dan Otağ'a</p>
+      <h2 id="sefer-baslik">Otağ ve sefer</h2>
+      <p>Oyun Otağ'da başlar ve her yol Otağ'a döner. Kağan Ötüken'de bekler; kahramanın ileri karargâhı Otağ'dır. Ocak, halk, sürü, sadak ve harita orada durur; seferlere yalnız kahraman ve ekibi çıkar.</p>
+    </div>
+    <div class="evreler">
+      <section class="evre yalin" id="sefer-otag" aria-labelledby="sefer-otag-baslik">
+        <div class="evre-metin">
+          <h3 id="sefer-otag-baslik">Otağ ve ulak</h3>
+          <ul>
+            <li><b>Otağ:</b> ocak, halk, sürü, sadak ve harita burada durur. Kağan'ın otağı değildir; Kağan Ötüken'dedir. Otağ bölüm bölüm yaklaşır: Altay Otağı, Bozkır Otağı, Ötüken Otağı.</li>
+            <li><b>Ulak:</b> Kağan'ın sözünü taşıyan, yüzü başlıkla örtülü, adsız haberci. Otağ'a her girişinde tek cümlelik “Kağan'ın sözü”nü iletir; sözü bir sözcük eksiltmeden taşır, yorum katmaz. Otağ Ötüken'e yaklaştıkça ulağın yolu kısalır.</li>
+            <li><b>Halk Otağ'da kalır:</b> Kam Ece, Usta Tunç ve seferlerle gelen aileler Otağ'da yaşar. Seferlere yalnız kahraman, Manas, Gökçe, Kıvılcım ve bir onluk atlı çıkar.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="evre yalin" id="sefer-harita" aria-labelledby="sefer-harita-baslik">
+        <div class="evre-metin">
+          <h3 id="sefer-harita-baslik">Harita ve çağrılar</h3>
+          <ul>
+            <li><b>Çağrı:</b> ulağın getirdiği haber: “şurada şu aile.” Otağ'ın masasında bir ok gibi durur.</li>
+            <li><b>Harita:</b> çağrılar haritada düğüm düğümdür; her birinin zorluğu (alev ve tehlike işaretleri), mesafesi ve ödülü görünür. Sırayı sen seçersin: zor çağrıyı erken mi, önce güçlenip mi?</li>
+            <li><b>Boy çağrısı:</b> bölümün büyük çağrısıdır; sadakta yeterli ok birikince açılır. Bu sefere Otağ'ın kendisi çıkar: halk ve ordu birlikte yürür, sonda boyun derdi karşına çıkar.</li>
+            <li><b>Bölüm 1'de:</b> Ak Kaya'nın yılkıcıları, Kayın Dere'nin çocukları, Maral Yurdu'nun avcıları; sonra Kar Boyu ve Yelbeğen Geçidi.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="evre yalin genis" id="sefer-akis" aria-labelledby="sefer-akis-baslik">
+        <div class="evre-metin">
+          <h3 id="sefer-akis-baslik">Sefer: gidiş, alma, dönüş, teslim</h3>
+          <ul>
+            <li><b>Gidiş:</b> kahraman, ekibi ve bir onluk atlı kervansız, hafif ve hızlı yola çıkar. Kamp kurmaya vakit yoktur; yolda pusuya düşebilirsin: kuşlar havalanır, toz kalkar, düşman örtüden çıkar. Bu bir gündüz savaşıdır, ışık kuralı yoktur; Dörtnala, Geri Atış, Kement ve komutan hamleleri iş görür.</li>
+            <li><b>Alma:</b> ailenin yurdu. Aileyi bulur, derdine bakarsın; o gecenin halkı alınan ailedir. Gidişte yorulan ekip, alma gecesini daha sıkı geçirir.</li>
+            <li><b>Dönüş:</b> alınan ailenin kervanıyla Otağ'a yürünür: gündüz yol ve toplama, akşam kamp, gece savunma. Aile kendi sürüsüyle gelir.</li>
+            <li><b>Teslim:</b> Otağ'da ok sadağa girer; aile ve sürü Otağ halkına katılır. Ulak haberi Ötüken'e götürür ve Kağan'ın sözünü getirir. Deneyim, ailenin ustalığına uyan yoldaşa akar: yılkıcılar Manas'a, avcılar Gökçe'ye, çocuklar Kıvılcım'a.</li>
+            <li>Kimse ölmez: yolda yorulan biri başka bir obaya sığınabilir. Ok yine sadağa girer; kaybın azsa ödül daha büyüktür.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="evre yalin" id="sefer-sadak" aria-labelledby="sefer-sadak-baslik">
+        <div class="evre-metin">
+          <h3 id="sefer-sadak-baslik">Sadak</h3>
+          <ul>
+            <li><b>Boş başlar:</b> ulak sadağı askere boş verir.</li>
+            <li><b>Her teslim bir ok:</b> aile oku küçüktür ve o bölümün boyunun renginde tüylüdür: Kar Boyu mavi-beyaz, Yılkı Boyu toprak sarısı, Yış Boyu yeşil-gümüş. Bölüm sonunda boyun büyük oku girer.</li>
+            <li><b>İlerleme çubuğu:</b> sadak yolun ne kadar yürüdüğünü gösterir. Boy çağrısı, sadakta yeterli ok birikince açılır.</li>
+            <li><b>Sonda:</b> dolu sadak Kağan'a sunulur.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="evre yalin" id="sefer-suru" aria-labelledby="sefer-suru-baslik">
+        <div class="evre-metin">
+          <h3 id="sefer-suru-baslik">Sürü</h3>
+          <ul>
+            <li><b>Sayılır, görünür:</b> kervanda koyun, keçi, kısrak ve öküz yürür; sayıları ekranda görürsün.</li>
+            <li><b>Süt:</b> koyun ve keçi sütü ayran ve kurut olur; kurut (kurutulmuş süzme yoğurt) bozulmaz, gidişte azıktır. Kısraktan kımız (mayalanmış kısrak sütü) sağılır; hem yedirir hem soğukta moral verir.</li>
+            <li><b>Otlak:</b> otlaklı yol sütü artırır; kar ve tipi azaltır. Gece yağmacılar sürüye de koşar; ocağın ışığı daralırsa ağıl karanlıkta kalır.</li>
+            <li><b>Kesim kararı:</b> kervan aç kalırsa akşam kartında koyun kesersin: yiyecek hemen gelir, yarının sütü azalır. Kıtlıkta son çare bir attır; çok yedirir ama bir atlı eksilir. Karar senindir.</li>
+            <li><b>Otağ büyür, sürü büyür:</b> her aile kendi sürüsüyle gelir; teslimde sürü Otağ'a katılır.</li>
+          </ul>
+        </div>
+      </section>
     </div>
   </section>
 
@@ -902,7 +979,7 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
     <div class="kisim-bas">
       <p class="kas">Bir gün, bir gece</p>
       <h2 id="oyun-baslik">Oyun nasıl oynanır</h2>
-      <p>Yol <button type="button" class="terim" data-terim="konak">konak</button> konak ilerler. Bir konak bir gündüz ve bir geceden oluşur, yaklaşık iki dakika sürer. Gündüz yolculuk ve toplama, akşam kamp, gece savunma. Kaybedersen yalnız o konak yeniden oynanır.</p>
+      <p>Seferin alma ve dönüş ayakları <button type="button" class="terim" data-terim="konak">konak</button> konak ilerler. Bir konak bir gündüz ve bir geceden oluşur, iki üç dakika sürer. Gündüz yolculuk ve toplama, akşam kamp, gece savunma. Kaybedersen yalnız o konak yeniden oynanır.</p>
     </div>
 
     <div class="dongu">
@@ -915,14 +992,14 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
           <circle cx="110" cy="26" r="5" style="fill: var(--murekkep)"></circle>
         </g>
         <text class="merkez-1" x="110" y="108" text-anchor="middle">1 konak</text>
-        <text class="merkez-2" x="110" y="128" text-anchor="middle">yaklaşık 2 dakika</text>
+        <text class="merkez-2" x="110" y="128" text-anchor="middle">iki üç dakika</text>
       </svg>
       <div class="dongu-yan">
         <p>Döngünün bir evresine dokun ya da döngüyü baştan sona izle. Her evrenin ayrıntısı aşağıda.</p>
         <ul class="evre-dugmeleri" id="evre-dugmeleri">
           <li><button type="button" data-evre="0" aria-pressed="true"><b>Gündüz</b><small>yaklaşık 70 sn</small></button></li>
           <li><button type="button" data-evre="1" aria-pressed="false"><b>Gün batımı</b><small>birkaç saniye</small></button></li>
-          <li><button type="button" data-evre="2" aria-pressed="false"><b>Gece</b><small>yaklaşık 50 sn</small></button></li>
+          <li><button type="button" data-evre="2" aria-pressed="false"><b>Gece</b><small>1-1,5 dakika</small></button></li>
           <li><button type="button" data-evre="3" aria-pressed="false"><b>Şafak</b><small>konak sonu</small></button></li>
         </ul>
         <button type="button" class="dongu-dugme" id="dongu-izle">Döngüyü izle</button>
@@ -935,11 +1012,12 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
         <div class="evre-metin">
           <h3 id="evre-0-baslik">Gündüz: kervan yürür</h3>
           <ul>
-            <li><b>Kervan</b> kendi yolunda ilerler; sen atınla çevresinde dolaşırsın.</li>
+            <li><b>Kervan</b> kendi yolunda ilerler (dönüşte alınan ailenin kervanı); sen atınla çevresinde dolaşırsın.</li>
             <li><b>Topla:</b> tezek, odun ve yiyecek. Topladığın şey ancak <b>kervana teslim</b> edince sayılır; kervana yaklaşman yeter.</li>
             <li><b>Kement:</b> yabani bir ata yaklaş, kement kendiliğinden atılır. At seni izler, kervana varınca atlı asker olur.</li>
             <li><b>Aile işleri:</b> Yılkıcı Manas atları getirir, Kıvılcım tezek kümelerini boşaltır, Gökçe iz sürüp avlanır. Tek dokunuşla <b>Gönder</b>, istersen <b>Geri çağır</b>.</li>
             <li><b>Dörtnala:</b> sağ alttaki düğme kısa bir hız verir. Soluk çabuk biter, birkaç saniyede dolar; ama av ve atlar ürker.</li>
+            <li><b>Sürü:</b> kervanda koyun, keçi ve kısrak yürür, süt verir. Kervan aç kalırsa akşam kesim kararı sana düşer.</li>
             <li><b>Hedefler:</b> her günün küçük, isteğe bağlı hedefleri vardır; ödülü kor ve tamgadır. Yol üstünde arada bir karar kartı çıkar.</li>
             <li>Akşam yaklaşınca kervan borusu çalar: geceden önce kervana dön.</li>
           </ul>
@@ -963,11 +1041,12 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
           <h3 id="evre-2-baslik">Gece: ocak yanar</h3>
           <ul>
             <li><b>Isı ve yakıt:</b> ocak tezekle ve odunla yanar. Halkın sıcaklığı düşerse askerler yavaşlar, soğuk uzarsa halk azalır.</li>
-            <li><b>Ocağı harla:</b> ışık büyür, ısı artar, ama yakıt üç kat hızlı tükenir.</li>
-            <li><b>Işık kuralı:</b> askerler yalnız ocağın ışığındaki yağıyı vurur. Yağılar hangi yönden gelecekse önceden uyarı çıkar.</li>
-            <li><b>Geri Atış:</b> düşmandan uzaklaşırken geriye attığın ok iki kat vurur ve kalkanı deler.</li>
+            <li><b>Işık kuralı:</b> okçular yalnız ocağın ışığındaki yağıyı vurur. Yağılar hangi yönden gelecekse önceden uyarı çıkar.</li>
+            <li><b>Sönen ocak, harla hakkı:</b> ocak geceye tam ışıkla başlar ve yavaş yavaş söner; ışık daraldıkça yağı karanlıkta yaklaşır. <b>Harla</b> ışığı geri getirir ve büyütür, ama hakkın sınırlıdır: gündüz biriktirdiğin tezek fazlası geceye harla hakkı olarak döner.</li>
+            <li><b>Geri Atış:</b> düşmandan uzaklaşırken geriye attığın ok kritik vurur: hasarı katlanır, kalkanı deler, ışığın dışındakini de bulur ve hiç ıskalamaz.</li>
+            <li><b>Gece Kementi:</b> kahramanın tek yeteneği. Seçkin bir düşmanı yakalar, sersemletir ve ışığa çeker; harlayı tamamlar, yerini tutmaz.</li>
+            <li><b>Komutanlar:</b> Manas ve Gökçe sahada savaşır. Portrelerine dokununca komut çarkı açılır ve oyun hafif ağır çekime girer; Yarma, Vur-çekil, Çember, Kıskaç gibi düzenlerden birini seçersin. Komutan yaralanırsa kahraman kaldırır: kimseyi geride bırakma.</li>
             <li><b>Gök Börü:</b> gece ruh kurtlarını çağırırsın; yağıları dağıtırlar.</li>
-            <li><b>Birlik:</b> atlı askerler ışıkta savunur. Güncellemelerle okçular, çift kılıçlı atlılar ve dört taktik gelir: Çember, Vur-çekil, Yarma, Kıskaç.</li>
           </ul>
         </div>
       </section>
@@ -976,8 +1055,9 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
         <div class="evre-metin">
           <h3 id="evre-3-baslik">Şafak: konak biter</h3>
           <ul>
-            <li>Kalan yağılar dağılıp kaybolur; kimse kan dökmez, düşen düşman dağılır.</li>
+            <li>Kalan yağılar dağılıp kaybolur; kimse kan dökmez, düşen düşman dağılır. Düşen birlikler yaralanır, şafakta tam canla kalkar.</li>
             <li><b>Konak sonu:</b> bir ile üç arası Alev ve kor kazanırsın. Kor, Otağ'da yeni yetenekler açar.</li>
+            <li><b>Gece notları:</b> ozan, gündüz yaptıklarının geceye nasıl yansıdığını birkaç satırda söyler: tezek fazlan kaç harla verdi, harlamadıysan kaç kişi ayrıldı.</li>
             <li><b>Halk sıfıra inerse</b> ozan araya girer: “Hayır, öyle olmadı.” O günü baştan anlatır; yalnız o konak yeniden oynanır.</li>
           </ul>
         </div>
@@ -987,9 +1067,9 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
         <div class="evre-metin">
           <h3 id="evre-boss-baslik">Bölüm sonu ve akın</h3>
           <ul>
-            <li><b>Bölüm sonu:</b> dokuzuncu konağın gecesi boyun derdi gelir. Bölüm 1'de Yelbeğen: saldırının ineceği yeri yerde gör, kaç, sonra açılan başı vur.</li>
-            <li><b>Akın</b> <span class="cip sonra">güncellemeyle gelir</span>: kervan yürürken bir birlikle yağı kampına baskın yaparsın. Amaç iki tanedir: esir aileleri çıkarmak ve yağıyı yıpratıp yolu açmak. Kurtarılan aileler obaya katılır.</li>
-            <li><b>Ordu</b> <span class="cip sonra">güncellemeyle gelir</span>: obaya katılan halkı birliklere sen dağıtırsın; emri sen verirsin, birlikler uygular.</li>
+            <li><b>Bölüm sonu:</b> boy çağrısında Otağ'ın kendisi yola çıkar; dokuzuncu konağın gecesi boyun derdi gelir. Bölüm 1'de Yelbeğen: saldırının ineceği yeri yerde gör, kaç, sonra açılan başı vur. Sonra Otağ bir sonraki bölgeye taşınır.</li>
+            <li><b>Akın</b> <span class="cip sonra">tam sürümle gelir</span>: kervan yürürken bir birlikle yağı kampına baskın yaparsın. Amaç iki tanedir: esir aileleri çıkarmak ve yağıyı yıpratıp yolu açmak. Kurtarılan aileler obaya katılır.</li>
+            <li><b>Ordu</b> <span class="cip sonra">tam sürümle gelir</span>: obaya katılan halkı atlı okçu ve kılıçlı birliklere sen dağıtırsın; emri sen verirsin, birlikler uygular.</li>
           </ul>
         </div>
       </section>
@@ -1005,22 +1085,28 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
       <p>Her sözcüğün kısa anlamı burada. “Oyunda” düğmesi o sözün oyundaki karşılığını açar.</p>
     </div>
     <dl class="sozluk" id="sozluk-liste">
-      <div class="madde" id="sozluk-kagan"><dt><span>Kağan</span><button type="button" aria-expanded="false" aria-controls="oy-kagan">Oyunda</button></dt><dd>Boyların başı, hükümdar. Bu anlatıda adı anılmayan Ulu Kağan, dağınık boyları Ötüken'e çağırır.</dd><dd class="oyunda" id="oy-kagan" hidden><b>Oyunda:</b> Ulu Kağan yalnız sonda, ocağın ışığında bir gölge olarak görünür.</dd></div>
+      <div class="madde" id="sozluk-kagan"><dt><span>Kağan</span><button type="button" aria-expanded="false" aria-controls="oy-kagan">Oyunda</button></dt><dd>Boyların başı, hükümdar. Bu anlatıda adı anılmayan Ulu Kağan, dağınık boyları Ötüken'e çağırır.</dd><dd class="oyunda" id="oy-kagan" hidden><b>Oyunda:</b> Ulu Kağan Ötüken'de bekler; sözü Otağ'a ulakla gelir. Yüz yüze yalnız sonda, ocağın ışığında bir gölge olarak görünür.</dd></div>
+      <div class="madde" id="sozluk-otag"><dt><span>Otağ</span><button type="button" aria-expanded="false" aria-controls="oy-otag">Oyunda</button></dt><dd>Keçe çadırlı büyük karargâh; ulu kişilerin çadırına da bu ad verilir.</dd><dd class="oyunda" id="oy-otag" hidden><b>Oyunda:</b> Otağ kahramanın ileri karargâhıdır: ocak, halk, sürü, sadak ve harita orada durur. Kağan'ın otağı değildir; Ötüken'e doğru bölüm bölüm yaklaşır (Altay, Bozkır, Ötüken Otağı).</dd></div>
+      <div class="madde" id="sozluk-ulak"><dt><span>Ulak</span><button type="button" aria-expanded="false" aria-controls="oy-ulak">Oyunda</button></dt><dd>Haber ve emir taşıyan atlı haberci.</dd><dd class="oyunda" id="oy-ulak" hidden><b>Oyunda:</b> ulak Kağan'ın sözünü Otağ'a taşır ve kahramana boş sadağı verir; adsızdır, yüzü başlıkla örtülüdür. Her teslimde haberi Ötüken'e götürür.</dd></div>
       <div class="madde" id="sozluk-el"><dt><span>El</span><button type="button" aria-expanded="false" aria-controls="oy-el">Oyunda</button></dt><dd>İl; boyların birliğiyle kurulan devlet. Eldeki “el” ile karışmasın diye büyük harfle yazılır.</dd><dd class="oyunda" id="oy-el" hidden><b>Oyunda:</b> sonda korlar tek ocakta birleşince El kurulur.</dd></div>
       <div class="madde" id="sozluk-toy"><dt><span>Toy</span><button type="button" aria-expanded="false" aria-controls="oy-toy">Oyunda</button></dt><dd>Büyük toplantı ve şölen. Boylar Kağan'ın toyunda bir araya gelir.</dd><dd class="oyunda" id="oy-toy" hidden><b>Oyunda:</b> yolun sonu Ötüken'deki toydur.</dd></div>
-      <div class="madde" id="sozluk-sadak"><dt><span>Sadak</span><button type="button" aria-expanded="false" aria-controls="oy-sadak">Oyunda</button></dt><dd>Okların taşındığı kılıf, okluk.</dd><dd class="oyunda" id="oy-sadak" hidden><b>Oyunda:</b> her boy Kağan'a varınca kendisine iletilen oku sadağa koyar.</dd></div>
+      <div class="madde" id="sozluk-sadak"><dt><span>Sadak</span><button type="button" aria-expanded="false" aria-controls="oy-sadak">Oyunda</button></dt><dd>Okların taşındığı kılıf, okluk.</dd><dd class="oyunda" id="oy-sadak" hidden><b>Oyunda:</b> sadak prologda boştur; her teslim ona bir ok koyar. Sonda dolu sadak Kağan'a sunulur.</dd></div>
+      <div class="madde" id="sozluk-cagri"><dt><span>Çağrı</span><button type="button" aria-expanded="false" aria-controls="oy-cagri">Oyunda</button></dt><dd>Çağırma, haber verme. Bu anlatıda Ulu Kağan'ın bir aileyi ya da boyu ocağa çağıran haberi.</dd><dd class="oyunda" id="oy-cagri" hidden><b>Oyunda:</b> ulağın getirdiği her haber bir çağrıdır; Otağ'ın masasında ok gibi durur ve haritada bir düğüm olur.</dd></div>
+      <div class="madde" id="sozluk-sefer"><dt><span>Sefer</span><button type="button" aria-expanded="false" aria-controls="oy-sefer">Oyunda</button></dt><dd>Uzak bir yere yapılan yolculuk.</dd><dd class="oyunda" id="oy-sefer" hidden><b>Oyunda:</b> bir çağrının yolculuğu: gidiş, alma, dönüş, teslim.</dd></div>
       <div class="madde" id="sozluk-kor"><dt><span>Kor</span><button type="button" aria-expanded="false" aria-controls="oy-kor">Oyunda</button></dt><dd>Ateşten kalan, için için yanan köz. Oba, vadideki ana ateşten aldığı koru demir bir kor kabında taşır.</dd><dd class="oyunda" id="oy-kor" hidden><b>Oyunda:</b> kor aynı zamanda konak sonunda kazanılan ödüldür; Otağ'da yetenek açar.</dd></div>
-      <div class="madde" id="sozluk-ocak"><dt><span>Ocak</span><button type="button" aria-expanded="false" aria-controls="oy-ocak">Oyunda</button></dt><dd>Kampın ortasındaki ateş; ısıyı ve ışığı o verir.</dd><dd class="oyunda" id="oy-ocak" hidden><b>Oyunda:</b> ocak tezekle ve odunla yanar; “Ocağı harla” ışığı büyütür, yakıtı üç kat yer.</dd></div>
-      <div class="madde" id="sozluk-konak"><dt><span>Konak</span><button type="button" aria-expanded="false" aria-controls="oy-konak">Oyunda</button></dt><dd>Bir günlük yol ve o gecenin kampı.</dd><dd class="oyunda" id="oy-konak" hidden><b>Oyunda:</b> bir gündüz ve bir gece, yaklaşık iki dakika. Her bölüm dokuz konaktır.</dd></div>
-      <div class="madde" id="sozluk-oba"><dt><span>Oba</span><button type="button" aria-expanded="false" aria-controls="oy-oba">Oyunda</button></dt><dd>Birlikte göçen akraba ailelerin küçük topluluğu.</dd><dd class="oyunda" id="oy-oba" hidden><b>Oyunda:</b> halk sayısı obanın büyüklüğüdür; yolda bulunan aileler katıldıkça artar.</dd></div>
-      <div class="madde" id="sozluk-boy"><dt><span>Boy</span><button type="button" aria-expanded="false" aria-controls="oy-boy">Oyunda</button></dt><dd>Birçok obanın bağlandığı büyük topluluk. Anlatıdaki Kar, Yılkı ve Yış boyları kurgusaldır.</dd><dd class="oyunda" id="oy-boy" hidden><b>Oyunda:</b> her bölüm bir boyun derdini anlatır; dert çözülünce boy yürüyüşe katılır.</dd></div>
+      <div class="madde" id="sozluk-ocak"><dt><span>Ocak</span><button type="button" aria-expanded="false" aria-controls="oy-ocak">Oyunda</button></dt><dd>Kampın ortasındaki ateş; ısıyı ve ışığı o verir.</dd><dd class="oyunda" id="oy-ocak" hidden><b>Oyunda:</b> ocak tezekle ve odunla yanar; geceye tam ışıkla başlar ve yavaş yavaş söner.</dd></div>
+      <div class="madde" id="sozluk-harla"><dt><span>Harla</span><button type="button" aria-expanded="false" aria-controls="oy-harla">Oyunda</button></dt><dd>Ateşi körükleyip büyütmek.</dd><dd class="oyunda" id="oy-harla" hidden><b>Oyunda:</b> “Ocağı harla” ışığı geri getirir ve büyütür; ama harla hakkın sınırlıdır. Gündüz biriktirdiğin tezek fazlası geceye hak olarak döner.</dd></div>
+      <div class="madde" id="sozluk-konak"><dt><span>Konak</span><button type="button" aria-expanded="false" aria-controls="oy-konak">Oyunda</button></dt><dd>Bir günlük yol ve o gecenin kampı.</dd><dd class="oyunda" id="oy-konak" hidden><b>Oyunda:</b> bir gündüz ve bir gece, iki üç dakika. Her bölüm dokuz konaktır.</dd></div>
+      <div class="madde" id="sozluk-oba"><dt><span>Oba</span><button type="button" aria-expanded="false" aria-controls="oy-oba">Oyunda</button></dt><dd>Birlikte göçen akraba ailelerin küçük topluluğu.</dd><dd class="oyunda" id="oy-oba" hidden><b>Oyunda:</b> halk Otağ'da kalır; halk sayısı obanın büyüklüğüdür ve teslim edilen aileler katıldıkça artar.</dd></div>
+      <div class="madde" id="sozluk-boy"><dt><span>Boy</span><button type="button" aria-expanded="false" aria-controls="oy-boy">Oyunda</button></dt><dd>Birçok obanın bağlandığı büyük topluluk. Anlatıdaki Kar, Yılkı ve Yış boyları kurgusaldır.</dd><dd class="oyunda" id="oy-boy" hidden><b>Oyunda:</b> her bölüm bir boyun derdini anlatır; boy çağrısı sadakta yeterli ok birikince açılır ve dert çözülünce boy yürüyüşe katılır.</dd></div>
+      <div class="madde" id="sozluk-yilki"><dt><span>Yılkı</span><button type="button" aria-expanded="false" aria-controls="oy-yilki">Oyunda</button></dt><dd>Yarı yabani, serbest yürüyen at sürüsü; sürüyü güdene yılkıcı denir.</dd><dd class="oyunda" id="oy-yilki" hidden><b>Oyunda:</b> Yılkı Boyu sürüleriyle yaşar; Manas yılkıcıdır, yabani atları o getirir.</dd></div>
       <div class="madde" id="sozluk-yagi"><dt><span>Yağı</span><button type="button" aria-expanded="false" aria-controls="oy-yagi">Oyunda</button></dt><dd>Düşman. Anlatıdaki yağılar adsızdır; hiçbir gerçek halkı temsil etmez.</dd><dd class="oyunda" id="oy-yagi" hidden><b>Oyunda:</b> gece ocağın ışığına giren yağıyı askerler vurur; vurulan yağı dağılıp kaybolur.</dd></div>
       <div class="madde" id="sozluk-kagni"><dt><span>Kağnı</span><button type="button" aria-expanded="false" aria-controls="oy-kagni">Oyunda</button></dt><dd>Öküzün çektiği iki tekerlekli yük arabası.</dd><dd class="oyunda" id="oy-kagni" hidden><b>Oyunda:</b> akşam kağnılar halka olup kampı çevreler; çadırlar kağnı yükünden yer tutar.</dd></div>
-      <div class="madde" id="sozluk-tezek"><dt><span>Tezek</span><button type="button" aria-expanded="false" aria-controls="oy-tezek">Oyunda</button></dt><dd>Kurutulmuş hayvan gübresi; ağacın az olduğu bozkırda yakıt.</dd><dd class="oyunda" id="oy-tezek" hidden><b>Oyunda:</b> topladığın tezek kervana teslim edilince sayılır ve geceleri ocağı besler.</dd></div>
-      <div class="madde" id="sozluk-kement"><dt><span>Kement</span><button type="button" aria-expanded="false" aria-controls="oy-kement">Oyunda</button></dt><dd>Ucu ilmekli uzun ip; at yakalamaya yarar.</dd><dd class="oyunda" id="oy-kement" hidden><b>Oyunda:</b> yabani ata yaklaşınca kement kendiliğinden atılır; at kervana varınca atlı asker olur.</dd></div>
+      <div class="madde" id="sozluk-tezek"><dt><span>Tezek</span><button type="button" aria-expanded="false" aria-controls="oy-tezek">Oyunda</button></dt><dd>Kurutulmuş hayvan gübresi; ağacın az olduğu bozkırda yakıt.</dd><dd class="oyunda" id="oy-tezek" hidden><b>Oyunda:</b> topladığın tezek kervana teslim edilince sayılır ve geceleri ocağı besler; fazlası harla hakkı kazandırır.</dd></div>
+      <div class="madde" id="sozluk-kement"><dt><span>Kement</span><button type="button" aria-expanded="false" aria-controls="oy-kement">Oyunda</button></dt><dd>Ucu ilmekli uzun ip; at yakalamaya yarar.</dd><dd class="oyunda" id="oy-kement" hidden><b>Oyunda:</b> yabani ata yaklaşınca kement kendiliğinden atılır; at kervana varınca atlı asker olur. Geceleri aynı kement, seçkin bir düşmanı yakalayıp ışığa çeker.</dd></div>
       <div class="madde" id="sozluk-gokboru"><dt><span>Gök Börü</span><button type="button" aria-expanded="false" aria-controls="oy-gokboru">Oyunda</button></dt><dd>Gök renkli kurt. Birçok anlatıda yol gösteren dost bir ruhtur; hiç konuşmaz.</dd><dd class="oyunda" id="oy-gokboru" hidden><b>Oyunda:</b> gündüz yolu gösterir, gece çağrılınca ruh kurtları yağıları dağıtır.</dd></div>
       <div class="madde" id="sozluk-ozan"><dt><span>Ozan</span><button type="button" aria-expanded="false" aria-controls="oy-ozan">Oyunda</button></dt><dd>Kopuzla destan anlatan kişi. Bu hikâyeyi bir ozan sonradan anlatır.</dd><dd class="oyunda" id="oy-ozan" hidden><b>Oyunda:</b> bir konak kaybedilince ozan “Hayır, öyle olmadı” der ve o günü yeniden anlatır.</dd></div>
-      <div class="madde" id="sozluk-bey"><dt><span>Bey</span><button type="button" aria-expanded="false" aria-controls="oy-bey">Oyunda</button></dt><dd>Kağan'ın bir yurdu yönetmek için seçtiği kişi; bugünkü valiye benzer bir sorumluluk.</dd><dd class="oyunda" id="oy-bey" hidden><b>Oyunda:</b> sonda Kağan, çağrıyı taşıyan sıradan askeri bey yapar.</dd></div>
+      <div class="madde" id="sozluk-bey"><dt><span>Bey</span><button type="button" aria-expanded="false" aria-controls="oy-bey">Oyunda</button></dt><dd>Kağan'ın bir yurdun yönetimini emanet ettiği kişi. Bu anlatıda bey, yurdunda kimse eksik mi diye gözeten kişidir; saymak, adıyla bilmek demektir.</dd><dd class="oyunda" id="oy-bey" hidden><b>Oyunda:</b> sonda Kağan, çağrıyı taşıyan sıradan askeri bey yapar.</dd></div>
       <div class="madde" id="sozluk-otuken"><dt><span>Ötüken</span><button type="button" aria-expanded="false" aria-controls="oy-otuken">Oyunda</button></dt><dd>Orhun suyu ve Hangay dağları çevresindeki ormanlı yurt. Eski yazıtlarda ilin tutulacağı yer diye anılır.</dd><dd class="oyunda" id="oy-otuken" hidden><b>Oyunda:</b> yolun varış yeri; Kağan'ın otağı ve ocağı oradadır.</dd></div>
       <div class="madde" id="sozluk-erlik"><dt><span>Erlik</span><button type="button" aria-expanded="false" aria-controls="oy-erlik">Oyunda</button></dt><dd>Altay anlatılarında yeraltının, karanlığın ve soğuğun efendisi.</dd><dd class="oyunda" id="oy-erlik" hidden><b>Oyunda:</b> Erlik görünmez; karanlıktan gelen yaratıkları ve Elçisi görünür.</dd></div>
       <div class="madde" id="sozluk-yis"><dt><span>Yış</span><button type="button" aria-expanded="false" aria-controls="oy-yis">Oyunda</button></dt><dd>Eski Türkçede ormanlı dağ, orman.</dd><dd class="oyunda" id="oy-yis" hidden><b>Oyunda:</b> Bölüm 3'teki Yış Boyu adını Ötüken'in ormanından alır.</dd></div>
@@ -1044,12 +1130,13 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
           <li>Bilge Kağan yazıtı Ötüken ormanını ilin tutulacağı yer olarak anar. Yazıtlarda azalmış, dağılmış boyların toplanıp güçlendirildiği de söylenir.</li>
           <li>Oyunun çağı Göktürk çağıdır. Dedem Korkut ise sonraki bir dönemin ozanıdır; o eski göçü sonradan anlatır. Bu bilerek kurulmuş bir çerçevedir.</li>
           <li>Kağan'ın boylara ok göndererek çağırdığını gösteren bir belge bilmiyoruz; çağrı oku oyunun yorumudur. “Tek ok kırılır” öğüdü de birçok halkın anlatısında geçer.</li>
+          <li>Otağ'ın ileri karargâh olması, ulak ve sadak düzeni oyunun kurgusudur; yazıtlarda böyle bir düzen anlatılmaz. Yelbeğen, Tepegöz ve Erlik eski anlatılardaki varlıklardır; oyun onları kendi yorumuyla kullanır.</li>
           <li>Ulu Kağan'ın adı anılmaz. Oyundaki boylar, kişiler ve yağılar kurgusaldır.</li>
         </ul>
         <p class="dip">Yazıt aktarımları ikincil çevirilere dayanır ve özetlenmiştir.</p>
       </aside>
       <div class="erken" aria-labelledby="erken-baslik">
-        <h3 id="erken-baslik">Erken erişim: ne var, ne gelecek</h3>
+        <h3 id="erken-baslik">Yapım durumu: ne var, ne gelecek</h3>
         <h4><span class="cip simdi">Şimdi</span> Bölüm 1, Altay'ın Karı</h4>
         <ul>
           <li>Dokuz konak ve sonda Yelbeğen</li>
@@ -1057,11 +1144,13 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
           <li>Kamp yeri seçimi, kağnı halkası, keçe çadır</li>
           <li>Gece savunması, ocak, Geri Atış, Gök Börü</li>
         </ul>
-        <h4><span class="cip sonra">Güncellemelerle</span> yolun devamı</h4>
+        <h4><span class="cip sonra">Tam sürümde</span> üç bölüm, tek yol</h4>
         <ul>
+          <li>Otağ, ulak, harita ve çağrılar; sefer: gidiş, alma, dönüş, teslim</li>
+          <li>Sadak, aile gelişimi ve sürü ekonomisi</li>
+          <li>Gece savaşı: harla hakkı, Gece Kementi, sahada komutanlar, komut çarkı, formasyonlar</li>
           <li>Bölüm 2: Yılkı Bozkırı ve Tepegöz</li>
           <li>Bölüm 3: Ötüken'in Eşiği ve Erlik'in Elçisi</li>
-          <li>Ordu: atlı okçular, çift kılıçlı atlılar, dört taktik</li>
           <li>Akın ve Ötüken'de toy</li>
         </ul>
       </div>
@@ -1193,10 +1282,10 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
 
   /* ---------- Toy: sadak ve ocak ---------- */
   var BOYLAR = [
-    { ad: "Demir Dağ obası", soz: "Demir Dağ obası çağrı okunu sadağa koydu, közünü ocağa kattı." },
-    { ad: "Kar Boyu", soz: "Kar Boyu geldi; karın altından çıkan ocakların közü ocağa karıştı." },
-    { ad: "Yılkı Boyu", soz: "Yılkı Boyu sürüleriyle vardı; haraç verilmeyen okunu sadağa koydu." },
-    { ad: "Yış Boyu", soz: "Yış Boyu ormandan indi: “Gelmeyen yok; bekleyen var.”" },
+    { ad: "Demir Dağ obası", soz: "Demir Dağ obası vadiye düşen çağrı okunu sadağa koydu, közünü ocağa kattı." },
+    { ad: "Kar Boyu", soz: "Kar Boyu geldi; büyük mavi tüylü oku sadağa girdi, karın altından çıkan ocakların közü ocağa karıştı." },
+    { ad: "Yılkı Boyu", soz: "Yılkı Boyu sürüleriyle vardı; toprak sarısı tüylü oku sadağa girdi." },
+    { ad: "Yış Boyu", soz: "Yış Boyu ormandan indi: “Gelmeyen yok; bekleyen var.” Yeşil-gümüş tüylü oku da sadağa girdi." },
     { ad: "Doğudan gelen boy", soz: "Gün doğusundan bir boy geldi; Kağan'ın başka bir ulağı onları bulmuştu." },
     { ad: "Güneyden gelen boy", soz: "Güneyden bir boy vardı; okunu sadağa, közünü ocağa kattı." },
     { ad: "Batıdan gelen boy", soz: "Batıdan bir boy geldi; yolları uzun, ateşleri sıcaktı." },
@@ -1230,7 +1319,7 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
     li.lastChild.textContent = b.ad;
     gelenListe.appendChild(li);
   });
-  var sayi = 1, ileri = $("#sadak-ileri"), kaydirici = $("#sadak-sayi");
+  var sayi = 0, ileri = $("#sadak-ileri"), kaydirici = $("#sadak-sayi");
   function toyCiz(duyur) {
     oklar.forEach(function (o, i) {
       var var_ = i < sayi;
@@ -1252,11 +1341,11 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
     $("#sadak-sayi-yazi").textContent = String(sayi);
     kaydirici.value = String(sayi);
     ileri.disabled = sayi >= 8;
-    if (duyur !== false) $("#toy-durum").textContent = BOYLAR[sayi - 1].soz;
+    if (duyur !== false) $("#toy-durum").textContent = sayi < 1 ? "Sadak boş: ulak onu böyle verdi. Ağzı açık, içi bekliyor." : BOYLAR[sayi - 1].soz;
     var bey = $("#bey");
     if (sayi >= 8) {
       bey.classList.remove("bekliyor");
-      $("#bey-soz").textContent = "Ulu Kağan der ki: “Geldiniz; kimse eksik değil.” Sonra çağrıyı taşıyan askeri yanına çağırdı.";
+      $("#bey-soz").textContent = "Dolu sadak sunuldu. Ulu Kağan der ki: “Geldiniz; kimse eksik değil.” Sonra bakışı en geride duran askere indi ve onu yanına çağırdı.";
       $("#bey-unvan").textContent = "Kağan'ın beyi";
     } else {
       bey.classList.add("bekliyor");
@@ -1265,8 +1354,12 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
     }
   }
   ileri.addEventListener("click", function () { if (sayi < 8) { sayi++; toyCiz(); } });
-  $("#sadak-bastan").addEventListener("click", function () { sayi = 1; toyCiz(); });
-  kaydirici.addEventListener("input", function () { sayi = Math.max(1, Math.min(8, parseInt(kaydirici.value, 10) || 1)); toyCiz(); });
+  $("#sadak-bastan").addEventListener("click", function () { sayi = 0; toyCiz(); });
+  kaydirici.addEventListener("input", function () {
+    var n = parseInt(kaydirici.value, 10);
+    sayi = isNaN(n) ? 0 : Math.max(0, Math.min(8, n));
+    toyCiz();
+  });
   toyCiz(false);
 
   /* ---------- Yol haritası ---------- */
@@ -1298,11 +1391,11 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
   el("text", { x: 556, y: 248, "class": "bolge", style: "font-size: 13px; letter-spacing: 0.12em" }, zemin).textContent = "Orhun";
 
   var DURAKLAR = [
-    { x: 70, y: 318, no: "P", etiket: "Demir Dağ", ex: 14, ey: 30, kas: "Prolog", baslik: "Demir Dağ ve Vadi", metin: "Ulağın oku vadiye düşer, demirciler dağı eritir. Ocak Ata koru verir, ulak Kağan'ın oklarını sıradan bir askere uzatır. Kervan yola çıkar.", boy: "Demir Dağ obası", dert: "Kızıl gökyüzünün çektiği yağılar", durum: "Erken erişimde", hedef: "#prolog" },
-    { x: 182, y: 222, no: "1", etiket: "Yelbeğen Geçidi", ex: -40, ey: -22, kas: "Birinci bölüm · 9 konak", baslik: "Altay'ın Karı", metin: "Karlı geçitlerde dağınık ocaklar. Gök Börü ilk kez görünür ve dar geçidi gösterir. Çok başlı dev dağılınca Kar Boyu közünü kor kabına katar.", boy: "Kar Boyu", dert: "Yelbeğen, çok başlı dev", durum: "Erken erişimde", hedef: "#bolum-1" },
-    { x: 330, y: 276, no: "2", etiket: "Tepegöz Ovası", ex: -50, ey: 34, kas: "İkinci bölüm · 9 konak", baslik: "Yılkı Bozkırı", metin: "Uçsuz bucaksız bozkır, yılkı sürüleri ve terk edilmiş kışlaklar. Haraç isteyen tek göz kapanınca Yılkı Boyu sürüleriyle katılır. Ordu ve taktikler burada açılır.", boy: "Yılkı Boyu", dert: "Tepegöz, haraç isteyen tek göz", durum: "Güncellemeyle gelir", hedef: "#bolum-2" },
-    { x: 470, y: 196, no: "3", etiket: "Ötüken Eşiği", ex: -118, ey: -14, kas: "Üçüncü bölüm · 9 konak", baslik: "Ötüken'in Eşiği", metin: "Ormanlı dağlar, Orhun geçidi ve ata taşları. Geri dönmek isteyenler olur; “Kimse gelmedi” fısıltısı susunca Yış Boyu katılır ve Ötüken'in kapısı açılır.", boy: "Yış Boyu", dert: "Erlik'in Elçisi, soğuk fısıltı", durum: "Güncellemeyle gelir", hedef: "#bolum-3" },
-    { x: 584, y: 112, no: "T", etiket: "Toy", ex: -14, ey: 34, kas: "Son", baslik: "Ötüken'de toy", metin: "Boylar okunu Kağan'ın sadağına koyar, korlar tek ocakta birleşir ve El kurulur. Çağrıyı taşıyan asker bey olur.", boy: "Bütün boylar", dert: "Yok; yol biter, ocak kalır", durum: "Güncellemeyle gelir", hedef: "#toy" }
+    { x: 70, y: 318, no: "P", etiket: "Demir Dağ", ex: 14, ey: 30, kas: "Prolog", baslik: "Demir Dağ ve Vadi", metin: "Ulağın oku vadiye düşer, demirciler dağı eritir. Ocak Ata koru verir; ulak sıradan bir askere boş bir sadak uzatır. Oba yola çıkar.", boy: "Demir Dağ obası", dert: "Kızıl gökyüzünün çektiği yağılar", otag: "Henüz kurulmadı; oba yürüyor", durum: "Oyunda", hedef: "#prolog" },
+    { x: 182, y: 222, no: "1", etiket: "Yelbeğen Geçidi", ex: -40, ey: -22, kas: "Birinci bölüm · 9 konak", baslik: "Altay'ın Karı", metin: "Karlı geçitlerde dağınık ocaklar. Üç çağrı üç aileyi Altay Otağı'na getirir ve sadağa üç ok girer; sonra Kar Boyu'nun çağrısı açılır. Çok başlı dev dağılınca Kar Boyu közünü kor kabına katar.", boy: "Kar Boyu", dert: "Yelbeğen, çok başlı dev", otag: "Altay Otağı", durum: "Oynanabilir ilk bölüm", hedef: "#bolum-1" },
+    { x: 330, y: 276, no: "2", etiket: "Tepegöz Ovası", ex: -50, ey: 34, kas: "İkinci bölüm · 9 konak", baslik: "Yılkı Bozkırı", metin: "Uçsuz bucaksız bozkır, yılkı sürüleri ve terk edilmiş kışlaklar. Otağ bozkıra taşınır, ulağın yolu kısalır. Haraç isteyen tek göz kapanınca Yılkı Boyu sürüleriyle katılır; ordu burada büyür.", boy: "Yılkı Boyu", dert: "Tepegöz, haraç isteyen tek göz", otag: "Bozkır Otağı", durum: "Tam sürümle gelir", hedef: "#bolum-2" },
+    { x: 470, y: 196, no: "3", etiket: "Ötüken Eşiği", ex: -118, ey: -14, kas: "Üçüncü bölüm · 9 konak", baslik: "Ötüken'in Eşiği", metin: "Ormanlı dağlar, Orhun geçidi ve ata taşları. Otağ Ötüken'in yamacına kurulur, Kağan'ın sözü yarım günde gelir. Geri dönmek isteyenler olur; “Kimse gelmedi” fısıltısı susunca Yış Boyu katılır ve Ötüken'in kapısı açılır.", boy: "Yış Boyu", dert: "Erlik'in Elçisi, soğuk fısıltı", otag: "Ötüken Otağı", durum: "Tam sürümle gelir", hedef: "#bolum-3" },
+    { x: 584, y: 112, no: "T", etiket: "Toy", ex: -14, ey: 34, kas: "Son", baslik: "Ötüken'de toy", metin: "Dört yönden gelen boylar toya varır; dolu sadak Kağan'a sunulur, korlar tek ocakta birleşir ve El kurulur. Çağrıyı taşıyan asker bey olur.", boy: "Bütün boylar", dert: "Yok; yol biter, ocak kalır", otag: "Kağan'ın ocağı, Ötüken", durum: "Tam sürümle gelir", hedef: "#toy" }
   ];
   var durakG = $("#harita-duraklar"), durakListe = $("#durak-listesi"), durakEl = [], durakDugme = [];
   function durakSec(i) {
@@ -1314,6 +1407,7 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
     $("#hp-metin").textContent = d.metin;
     $("#hp-boy").textContent = d.boy;
     $("#hp-dert").textContent = d.dert;
+    $("#hp-otag").textContent = d.otag;
     $("#hp-durum").textContent = d.durum;
   }
   DURAKLAR.forEach(function (d, i) {
@@ -1334,10 +1428,10 @@ figcaption { font-family: var(--yazi-arayuz); font-size: 0.8125rem; line-height:
 
   /* ---------- Döngü göstergesi ---------- */
   var EVRE = [
-    { pay: 0.5, renk: "var(--altin)" },
-    { pay: 0.1, renk: "var(--kor)" },
-    { pay: 0.32, renk: "var(--murekkep)" },
-    { pay: 0.08, renk: "var(--nehir)" }
+    { pay: 0.44, renk: "var(--altin)" },
+    { pay: 0.06, renk: "var(--kor)" },
+    { pay: 0.44, renk: "var(--murekkep)" },
+    { pay: 0.06, renk: "var(--nehir)" }
   ];
   var cevre = 2 * Math.PI * 84, bas = 0, ortalar = [];
   var yaylar = $("#dongu-yaylar");
